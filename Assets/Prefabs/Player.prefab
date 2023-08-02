@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2661779310801780232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2661779310801780236}
+  - component: {fileID: 2661779310801780233}
+  - component: {fileID: 2661779310801780237}
+  - component: {fileID: 2661779310801780238}
+  - component: {fileID: 1340198943}
+  - component: {fileID: -8672336018516646206}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2661779310801780236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  m_LocalRotation: {x: 0.04260741, y: 0.009700134, z: -0.011523449, w: 0.9989784}
+  m_LocalPosition: {x: 0.016, y: 0.996, z: 0.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.896, y: 1.058, z: -1.277}
+--- !u!135 &2661779310801780233
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2661779310801780237
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &2661779310801780238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ade0c63bdc2f24285c75c7036cb31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2661779310801780237}
+  speed: 10
+  jumpPowerUp: 350
+  jumpPowerForward: 80
+  doubleJumpPowerUpCoefficient: 1.5
+  doubleJumpForwardCoefficient: 1.3
+  speedCoefficient: 0.7
+  platformGenerationCounter: 10
+--- !u!114 &1340198943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c00d32acbc92142866b62a1aa718a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhiteBlackPlatform: {fileID: 8760653208200727429, guid: 88df5a968e4360146a004edb9ea81faa,
+    type: 3}
+  BluePlatform: {fileID: 1940422045940091747, guid: eb5c37ecc651ee34e86a2bc7f13a5b34,
+    type: 3}
+  GreenPlatform: {fileID: 8405765244250462197, guid: bb38ec30a208da941ab06f3c1f19ce7a,
+    type: 3}
+  RedYellowPlatform: {fileID: 2811412173114022586, guid: 7a7a43ace9f7329408f24b93024178d2,
+    type: 3}
+  Coin: {fileID: 3631468553841976779, guid: 31f011b0345e1c84887f3e0537b93753, type: 3}
+  initialPlatformCount: 20
+  yIncrement: 1
+  zIncrement: 2
+  yCoinIncrement: 0.7
+  platformsXPositionsRanges:
+  - -7
+  - -4
+  - -1.5
+  - 1.5
+  - 4
+  - 7
+--- !u!114 &-8672336018516646206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661779310801780232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af442a921a3f79e4ba021d4c86c452b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+  CoinsText: {fileID: 0}
+  Player: {fileID: 2661779310801780232}
+  currentSkin: {fileID: 0}

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 94c00d32acbc92142866b62a1aa718a4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - WhiteBlackPlatform: {fileID: 8760653208200727429, guid: 88df5a968e4360146a004edb9ea81faa,
+      type: 3}
+  - BluePlatform: {fileID: 1940422045940091747, guid: eb5c37ecc651ee34e86a2bc7f13a5b34,
+      type: 3}
+  - GreenPlatform: {fileID: 8405765244250462197, guid: bb38ec30a208da941ab06f3c1f19ce7a,
+      type: 3}
+  - RedYellowPlatform: {fileID: 2811412173114022586, guid: 7a7a43ace9f7329408f24b93024178d2,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
