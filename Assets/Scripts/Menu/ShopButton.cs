@@ -12,9 +12,4 @@ public class ShopButton : MonoBehaviour, IPointerClickHandler
         Shop.SetActive(true);
         MainMenu.SetActive(false);
     }
-
-    void OnEnable()
-    {
-        transform.localPosition = Vector3.zero;
-    }
 }
