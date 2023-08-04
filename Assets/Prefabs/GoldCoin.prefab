@@ -58,11 +58,11 @@ GameObject:
   - component: {fileID: 6209499407945165487}
   - component: {fileID: 8198914747853250149}
   - component: {fileID: 7848099484363620842}
-  - component: {fileID: 8628059123256552404}
+  - component: {fileID: 6796351686278373253}
   - component: {fileID: 8100883468301215625}
   m_Layer: 0
   m_Name: GoldCoin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9596e58d4a4449a419490c1fca73ec34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8628059123256552404
+--- !u!114 &6796351686278373253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4,9 +4,14 @@ using UnityEngine.EventSystems;
 
 public class AnimationButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public float XOffset = 0.2f;
+	private Transform currentTransform;
+	//public Vector3 defaultSc
+    private void Start()
+    {
+		currentTransform = transform;
+    }
 
-	public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
 	{
 		transform.DOScale(1f, 0.2f).SetId(this);
 	}
@@ -18,8 +23,8 @@ public class AnimationButtons : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnDisable()
     {
-		transform.localScale = Vector3.one;
-		DOTween.Kill(this);
+        transform.localScale = new Vector3(0.9f, 0.9f, 1f);
+        DOTween.Kill(this);
 		//DOTween.KillAll();
     }
 }

@@ -6,7 +6,7 @@ public class CoinsCollector : MonoBehaviour
 	{
 		if (collider.tag == "Player")
 		{
-			collider.GetComponent<PlayerWallet>().AddCoins();
+			collider.GetComponent<PlayerManager>().AddCoins();
 		}
 	}
 }

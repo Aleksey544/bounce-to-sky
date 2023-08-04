@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1001 &128830830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,7 +676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1 &770595421
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!114 &789918826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,7 +1428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1 &1257499563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +1628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1 &1422508540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,7 +2098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1 &2065679113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a91be7721ac064e810615669561012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XOffset: 0.2
 --- !u!1 &2107594291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,17 +2447,17 @@ MonoBehaviour:
   - Name: SoccerballSkin
     Price: 0
   - Name: VolleyballSkin
-    Price: 500
+    Price: 50
   - Name: WaterballSkin
-    Price: 750
+    Price: 100
   - Name: GrassballSkin
-    Price: 1000
+    Price: 200
   - Name: SandballSkin
-    Price: 1500
+    Price: 500
   - Name: RockballSkin
-    Price: 2000
+    Price: 800
   - Name: LavaballSkin
-    Price: 5000
+    Price: 1000
   SelectButton: {fileID: 789918826}
   SelectImage: {fileID: 21300000, guid: 70564c6da3c20ea4ba807b2419b68989, type: 3}
   SelectedImage: {fileID: 21300000, guid: 04fcb9ae507a4bd478d35479328b351b, type: 3}
@@ -2518,7 +2511,6 @@ GameObject:
   - component: {fileID: 2701691539566870361}
   - component: {fileID: 2701691539566870366}
   - component: {fileID: 2701691539566870367}
-  - component: {fileID: 2701691539566870368}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2568,17 +2560,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2701691539566870364}
---- !u!114 &2701691539566870368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2701691539566870364}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af442a921a3f79e4ba021d4c86c452b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Coins: 0
-  CoinsText: {fileID: 0}

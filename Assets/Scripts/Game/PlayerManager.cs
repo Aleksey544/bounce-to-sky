@@ -1,12 +1,9 @@
 ﻿//Скрипт движения и управления игроком
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
-using System.Runtime.CompilerServices;
-using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public Rigidbody player;
     private Vector3 playerPosition;
@@ -19,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public int platformGenerationCounter;
     private string movementButton;
     public int targetFPS = 60;
-    private int _score = 0;
+    public int Score = 0;
+    public int CurrentCoins = 0;
     public TMP_Text ScoreText;
+    public TMP_Text CoinsText;
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -35,12 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < _score - 10)
+        if (transform.position.y < Score - 20)
         {
-            SceneManager.LoadScene("MenuScene");
-
-            if (_score > SettingsAssistant.BestScore)
-                SettingsAssistant.BestScore = _score;
+            PlayerDied();
         }
     }
 
@@ -48,6 +45,16 @@ public class PlayerMovement : MonoBehaviour
     {
         GeneratePlatforms();
         GetInput();
+    }
+
+    private void PlayerDied()
+    {
+        SettingsAssistant.Coins += CurrentCoins;
+
+        if (Score > SettingsAssistant.BestScore)
+            SettingsAssistant.BestScore = Score;
+
+        gameManager.GameOver(Score, CurrentCoins);
     }
 
     private void GeneratePlatforms()
@@ -82,8 +89,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void AddScore()
     {
-        _score = Mathf.FloorToInt(transform.position.y);
-        ScoreText.text = _score.ToString();
+        Score = Mathf.FloorToInt(transform.position.y);
+        ScoreText.text = Score.ToString();
+    }
+
+    public void AddCoins()
+    {
+        CurrentCoins++;
+        CoinsText.text = CurrentCoins.ToString();
     }
 
     public void SetMovementButton(string pressedButton)
@@ -104,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("s") || movementButton == "Back")
             OnBackButtonPressed();
-	}
+    }
 
     private void OnRightButtonPressed()
     {
@@ -128,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerAnimation()
     {
-		transform.DORewind();
-		transform.DOShakeScale(.5f, .5f, 3, 10);
-	}
+        transform.DORewind();
+        transform.DOShakeScale(.5f, .5f, 3, 10);
+    }
 }
