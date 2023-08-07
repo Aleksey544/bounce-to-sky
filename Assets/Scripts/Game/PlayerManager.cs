@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour
     public TMP_Text ScoreText;
     public TMP_Text CoinsText;
     public GameManager gameManager;
+    public AudioManager audioManager;
+    private bool isPlayerDied = false;
 
     private void Awake()
     {
@@ -33,28 +35,30 @@ public class PlayerManager : MonoBehaviour
         playerPosition.y = transform.position.y;
     }
 
-    void Update()
-    {
-        if (transform.position.y < Score - 20)
-        {
-            PlayerDied();
-        }
-    }
-
     void FixedUpdate()
     {
         GeneratePlatforms();
         GetInput();
+        PlayerDied();
     }
 
     private void PlayerDied()
     {
-        SettingsAssistant.Coins += CurrentCoins;
+        if (transform.position.y < Score - 3 && !isPlayerDied)
+        {
+            isPlayerDied = true;
+            audioManager.PlayerDied();
+        }
 
-        if (Score > SettingsAssistant.BestScore)
-            SettingsAssistant.BestScore = Score;
+        if (transform.position.y < Score - 20)
+        {
+            SettingsAssistant.Coins += CurrentCoins;
 
-        gameManager.GameOver(Score, CurrentCoins);
+            if (Score > SettingsAssistant.BestScore)
+                SettingsAssistant.BestScore = Score;
+
+            gameManager.GameOver(Score, CurrentCoins);
+        }
     }
 
     private void GeneratePlatforms()
@@ -76,15 +80,18 @@ public class PlayerManager : MonoBehaviour
         if (collision.collider.tag == "Platform")
         {
             player.AddForce(0, jumpPowerUp * Time.deltaTime, jumpPowerForward * Time.deltaTime, ForceMode.Impulse);
-            PlayerAnimation();
-            AddScore();
+            audioManager.PlayerJumpOnPlatform("Platform");
         }
         else if (collision.collider.tag == "DoubleJumpPlatform")
         {
-            player.AddForce(0, doubleJumpPowerUpCoefficient * jumpPowerUp * Time.deltaTime, doubleJumpForwardCoefficient * jumpPowerForward * Time.deltaTime, ForceMode.Impulse);
-            PlayerAnimation();
-            AddScore();
+            player.AddForce(0, doubleJumpPowerUpCoefficient * jumpPowerUp * Time.deltaTime,
+                doubleJumpForwardCoefficient * jumpPowerForward * Time.deltaTime, ForceMode.Impulse);
+
+            audioManager.PlayerJumpOnPlatform("DoubleJumpPlatform");
         }
+
+        PlayerAnimation();
+        AddScore();
     }
 
     private void AddScore()
@@ -97,6 +104,7 @@ public class PlayerManager : MonoBehaviour
     {
         CurrentCoins++;
         CoinsText.text = CurrentCoins.ToString();
+        audioManager.CoinCollected();
     }
 
     public void SetMovementButton(string pressedButton)
