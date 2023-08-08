@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
         if (transform.position.y < Score - 3 && !isPlayerDied)
         {
             isPlayerDied = true;
-            audioManager.PlayerDied();
+            audioManager.PlayerDiedSoundPlay();
         }
 
         if (transform.position.y < Score - 20)
@@ -80,14 +80,14 @@ public class PlayerManager : MonoBehaviour
         if (collision.collider.tag == "Platform")
         {
             player.AddForce(0, jumpPowerUp * Time.deltaTime, jumpPowerForward * Time.deltaTime, ForceMode.Impulse);
-            audioManager.PlayerJumpOnPlatform("Platform");
+            audioManager.PlayerJumpSoundPlay("Platform");
         }
         else if (collision.collider.tag == "DoubleJumpPlatform")
         {
             player.AddForce(0, doubleJumpPowerUpCoefficient * jumpPowerUp * Time.deltaTime,
                 doubleJumpForwardCoefficient * jumpPowerForward * Time.deltaTime, ForceMode.Impulse);
 
-            audioManager.PlayerJumpOnPlatform("DoubleJumpPlatform");
+            audioManager.PlayerJumpSoundPlay("DoubleJumpPlatform");
         }
 
         PlayerAnimation();
@@ -104,7 +104,7 @@ public class PlayerManager : MonoBehaviour
     {
         CurrentCoins++;
         CoinsText.text = CurrentCoins.ToString();
-        audioManager.CoinCollected();
+        audioManager.CoinCollectedSoundPlay();
     }
 
     public void SetMovementButton(string pressedButton)

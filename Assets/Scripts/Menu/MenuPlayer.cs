@@ -27,7 +27,7 @@ public class MenuPlayer : MonoBehaviour
         if (collision.collider.tag == "Platform")
         {
             player.AddForce(0, jumpPowerUp * Time.deltaTime, 0, ForceMode.Impulse);
-            //PlayerAnimation();
+            PlayerAnimation();
         }
     }
 

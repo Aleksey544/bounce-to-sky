@@ -10,6 +10,8 @@ public class SettingsAssistant
     private const string BOUGHT_SKIN = "BOUGHT_SKIN";
     private const string SELECTED_SKIN = "SELECTED_SKIN";
     private const string BEST_SCORE = "BEST_SCORE";
+    private const string IS_SOUNDS_PLAYING = "IS_SOUNDS_PLAYING";
+    private const string IS_MUSIC_PLAYING = "IS_MUSIC_PLAYING";
 
     public static void DeletePrefByKey(string key)
     {
@@ -47,6 +49,18 @@ public class SettingsAssistant
     public static void SetBoughtSkin(string skinName) 
     {
         _settingsManager.Set($"{BOUGHT_SKIN}{skinName}", true);
+    }
+
+    public static bool IsSoundsPlaying
+    {
+        get { return _settingsManager.Get(IS_SOUNDS_PLAYING, true); }
+        set { _settingsManager.Set(IS_SOUNDS_PLAYING, value); }
+    }    
+    
+    public static bool IsMusicPlaying
+    {
+        get { return _settingsManager.Get(IS_MUSIC_PLAYING, true); }
+        set { _settingsManager.Set(IS_MUSIC_PLAYING, value); }
     }
 
     //// public static string lastSelectedGarageCarVIN

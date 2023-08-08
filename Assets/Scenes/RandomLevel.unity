@@ -1763,7 +1763,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 75
   field of view: 75
   orthographic: 0
   orthographic size: 5
@@ -1824,7 +1824,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 862fea211e7d3044d96722003fcabd65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1920,14 +1920,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07efd33b079d8d94ca08e0aa82848f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundsVolume: 0.35
+  musicVolume: 0.4
+  musicButton: {fileID: 0}
+  soundsButton: {fileID: 0}
+  musicOnImage: {fileID: 0}
+  musicOffImage: {fileID: 0}
+  soundsOnImage: {fileID: 0}
+  soundsOffImage: {fileID: 0}
   screamingSounds:
   - {fileID: 8300000, guid: bb2f3b648fbeb9e488599e5d4df36ba0, type: 3}
   - {fileID: 8300000, guid: cba3f83d105eef647bed014f9d0b22ea, type: 3}
   - {fileID: 8300000, guid: 8abc51dd85432ad47809c63075e86478, type: 3}
   - {fileID: 8300000, guid: d2c776641bb7de5428587a9d3ad15a6c, type: 3}
   - {fileID: 8300000, guid: 8d8d2909bcfbe2d4b930119e71b71e3c, type: 3}
-  jumpAudio: {fileID: 963194232}
-  coinAndDieAudio: {fileID: 963194233}
+  buttonSound: {fileID: 8300000, guid: bc89ff10dd8adc140b91d6dbfdfe9ac5, type: 3}
+  backgroundMusic: {fileID: 963194230}
+  jumpAndButtonSounds: {fileID: 963194232}
+  coinAndDieSounds: {fileID: 963194233}
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3680,6 +3690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: initialPlatformCount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780232, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: m_Name

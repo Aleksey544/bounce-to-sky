@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 public class AnimationButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public AudioManager audioManager;
+
 	private Transform currentTransform;
 	//public Vector3 defaultSc
     private void Start()
@@ -14,7 +16,7 @@ public class AnimationButtons : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
 	{
 		transform.DOScale(1f, 0.2f).SetId(this);
-	}
+    }
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
