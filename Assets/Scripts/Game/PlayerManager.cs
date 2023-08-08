@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         playerPosition.y = transform.position.y;
+        audioManager = AudioManager.Instantiate;
     }
 
     void FixedUpdate()

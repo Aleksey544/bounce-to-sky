@@ -7,22 +7,28 @@ public class AudioManager : MonoBehaviour
 {
     public float soundsVolume = 0.35f;
     public float musicVolume = 0.4f;
-    public Button musicButton;
-    public Button soundsButton;
-    public Sprite musicOnImage;
-    public Sprite musicOffImage;
-  
+
+    [SerializeField] private AudioClip gameMusic;
+    [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip[] screamingSounds;
     [SerializeField] private AudioSource backgroundMusic;
     [SerializeField] private AudioSource jumpAndButtonSounds;
     [SerializeField] private AudioSource coinAndDieSounds;
 
+    public static AudioManager Instantiate;
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+        if (Instantiate == null) { Instantiate = this; } else { Destroy(this); }
+    }
     private void Start()
     {
         ChangeMusicVolume();
         ChangeSoundsVolume();
+        PlayMenuMusic();
     }
-
+    public void PlayMenuMusic() { backgroundMusic.clip = mainMenuMusic; backgroundMusic.Play();  }
+    public void PlayGameMusic() { backgroundMusic.clip = gameMusic; backgroundMusic.Play(); }
     public void PlayerJumpSoundPlay(string PlatformTag)
     {
         if (PlatformTag == "Platform")
@@ -58,17 +64,11 @@ public class AudioManager : MonoBehaviour
         {
             if (backgroundMusic != null)
                 backgroundMusic.volume = musicVolume;
-
-            if (musicButton != null)
-                musicButton.image.sprite = musicOnImage;
         }
         else
         {
             if (backgroundMusic != null)
                 backgroundMusic.volume = 0f;
-
-            if (musicButton != null)
-                musicButton.image.sprite = musicOffImage;
         }
     }
 
