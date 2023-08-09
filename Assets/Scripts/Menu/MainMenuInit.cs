@@ -5,6 +5,7 @@ public class MainMenuInit : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Ins.PlayMenuMusic();
+        if (SettingsAssistant.IsMusicPlaying)
+            AudioManager.Ins.PlayMenuMusic();
     }
 }

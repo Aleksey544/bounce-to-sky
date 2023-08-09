@@ -10,10 +10,12 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip gameMusic;
     [SerializeField] private AudioClip mainMenuMusic;
-    [SerializeField] private AudioClip[] screamingSounds;
+    [SerializeField] private AudioClip coinClip;
+    [SerializeField] private AudioClip[] screamingClips;
     [SerializeField] private AudioSource backgroundMusic;
     [SerializeField] private AudioSource jumpAndSounds;
-    [SerializeField] private AudioSource coinAndDieSounds;
+    [SerializeField] private AudioSource coinSound;
+    [SerializeField] private AudioSource screamSound;
 
     private static AudioManager instantiate;
 
@@ -36,24 +38,26 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //    ChangeMusicVolume();
+    //    ChangeSoundsVolume();
+    //}
+
+    public void PlayMenuMusic()
     {
-        ChangeMusicVolume();
-        ChangeSoundsVolume();
-        PlayMenuMusic();
-    }
-
-    public void PlayMenuMusic() 
-    { 
         backgroundMusic.clip = mainMenuMusic;
-        backgroundMusic.Play(); 
-    
+        backgroundMusic.Play();
+
     }
 
-    public void PlayGameMusic() 
-    { 
-        backgroundMusic.clip = gameMusic;
-        backgroundMusic.Play(); 
+    public void PlayGameMusic()
+    {
+        if (backgroundMusic.clip != gameMusic)
+        {
+            backgroundMusic.clip = gameMusic;
+            backgroundMusic.Play();
+        }
     }
 
     public void PlayerJumpSoundPlay(string PlatformTag)
@@ -72,16 +76,15 @@ public class AudioManager : MonoBehaviour
 
     public void CoinCollectedSoundPlay()
     {
-        coinAndDieSounds.Play();
+        coinSound.Play();
     }
 
     public void PlayerDiedSoundPlay()
     {
         if (SettingsAssistant.IsSoundsPlaying)
         {
-            coinAndDieSounds.clip = screamingSounds[Random.Range(0, screamingSounds.Length)];
-            coinAndDieSounds.volume = 1f;
-            coinAndDieSounds.Play();
+            screamSound.clip = screamingClips[Random.Range(0, screamingClips.Length)];
+            screamSound.Play();
         }
     }
 
@@ -106,8 +109,14 @@ public class AudioManager : MonoBehaviour
             if (jumpAndSounds != null)
                 jumpAndSounds.volume = soundsVolume;
 
-            if (coinAndDieSounds != null)
-                coinAndDieSounds.volume = soundsVolume;
+            if (coinSound != null)
+                coinSound.volume = soundsVolume;
+
+            if (screamSound != null)
+            {
+                screamSound.volume = 1f;
+                Debug.Log("screamSound.volume = 1f");
+            }
 
             //  if (soundsButton != null)
             //    soundsButton.image.sprite = soundsOnImage;
@@ -117,8 +126,11 @@ public class AudioManager : MonoBehaviour
             if (jumpAndSounds != null)
                 jumpAndSounds.volume = 0f;
 
-            if (coinAndDieSounds != null)
-                coinAndDieSounds.volume = 0f;
+            if (coinSound != null)
+                coinSound.volume = 0f;
+
+            if (screamSound != null)
+                screamSound.volume = 0f;
 
             //  if (soundsButton != null)
             //      soundsButton.image.sprite = soundsOffImage;

@@ -66,7 +66,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (Mathf.FloorToInt(transform.position.y) > Mathf.FloorToInt(playerPosition.y + platformGenerationCounter))
         {
-            PlatformGenerator platformGenerator = FindObjectOfType<PlatformGenerator>();
+            LevelGenerator platformGenerator = FindObjectOfType<LevelGenerator>();
 
             if (platformGenerator != null)
             {

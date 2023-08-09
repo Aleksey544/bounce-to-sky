@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2811412173114022581}
   - component: {fileID: 2811412173114022580}
   - component: {fileID: 2811412173114022587}
+  - component: {fileID: 2003642034445209363}
   m_Layer: 0
   m_Name: RedYellowPlatform
   m_TagString: Untagged
@@ -108,5 +109,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9596e58d4a4449a419490c1fca73ec34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2003642034445209363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811412173114022586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21977b8c453f2c94396f35bbf22747e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
