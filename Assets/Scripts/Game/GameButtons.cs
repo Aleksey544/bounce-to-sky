@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameButtons : MonoBehaviour
 {
     public TMP_Text GameOverScoreText;
     public TMP_Text GameOverCoinsText;
@@ -12,18 +12,31 @@ public class GameManager : MonoBehaviour
     public GameObject TopPanel;
     public GameObject Player;
 
-    public void Resume()
+    public void ContinueButtonPressed()
     {
         GamePausedPanel.SetActive(false);
         ControlButtonsPanel.SetActive(true);
         Time.timeScale = 1.0f;
     }
 
-    public void Pause()
+    public void PauseButtonPressed()
     {
         GamePausedPanel.SetActive(true);
         ControlButtonsPanel.SetActive(false);
         Time.timeScale = 0.0f;
+    }
+
+
+    public void MenuButtonPressed()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("MainMenu");
+        AudioManager.Ins.PlayMenuMusic();
+    }
+
+    public void RestartButtonPressed()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameOver(int Score, int CurrentCoins)
@@ -34,17 +47,5 @@ public class GameManager : MonoBehaviour
         GameOverPanel.SetActive(true);
         GameOverScoreText.text = Score.ToString();
         GameOverCoinsText.text = CurrentCoins.ToString();
-    }
-
-    public void MenuButtonPressed()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MenuScene");
-        AudioManager.Instantiate.PlayMenuMusic();
-    }
-
-    public void RestartButtonPressed()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

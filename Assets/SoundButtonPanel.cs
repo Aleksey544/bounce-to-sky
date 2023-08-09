@@ -9,6 +9,7 @@ public class SoundButtonPanel : MonoBehaviour, IPointerClickHandler
     public Image imageOn;
     public Image imageOff;
     public bool isSound;
+
     public void Start()
     {
         if (isSound)
@@ -20,18 +21,19 @@ public class SoundButtonPanel : MonoBehaviour, IPointerClickHandler
             InitButton(SettingsAssistant.IsMusicPlaying);
         }
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (isSound)
         {
             Debug.Log("SoundsButtonPressed");
-            AudioManager.Instantiate.SoundsButtonPressed();
+            AudioManager.Ins.SoundsButtonPressed();
             InitButton(SettingsAssistant.IsSoundsPlaying);
         }
         else
         {
             Debug.Log("MusicButtonPressed");
-            AudioManager.Instantiate.MusicButtonPressed();
+            AudioManager.Ins.MusicButtonPressed();
             InitButton(SettingsAssistant.IsMusicPlaying);
         }
     }

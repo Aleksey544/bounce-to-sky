@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public int CurrentCoins = 0;
     public TMP_Text ScoreText;
     public TMP_Text CoinsText;
-    public GameManager gameManager;
+    public GameButtons gameManager;
     public AudioManager audioManager;
     private bool isPlayerDied = false;
 
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         playerPosition.y = transform.position.y;
-        audioManager = AudioManager.Instantiate;
+        audioManager = AudioManager.Ins;
     }
 
     void FixedUpdate()

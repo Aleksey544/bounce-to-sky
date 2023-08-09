@@ -6,8 +6,7 @@ public class PlayButton : MonoBehaviour, IPointerClickHandler
 {
 	public void OnPointerClick(PointerEventData eventData)
 	{
-
-        AudioManager.Instantiate.PlayGameMusic();
+        AudioManager.Ins.PlayGameMusic();
         SceneManager.LoadScene("RandomLevel");
 	}
 }

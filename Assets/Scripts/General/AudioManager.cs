@@ -12,35 +12,62 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip[] screamingSounds;
     [SerializeField] private AudioSource backgroundMusic;
-    [SerializeField] private AudioSource jumpAndButtonSounds;
+    [SerializeField] private AudioSource jumpAndSounds;
     [SerializeField] private AudioSource coinAndDieSounds;
 
-    public static AudioManager Instantiate;
-    public void Awake()
+    private static AudioManager instantiate;
+
+    public static AudioManager Ins
+    {
+        get
+        {
+            if (instantiate == null)
+            {
+                AudioManager resource = Resources.Load<AudioManager>("Managers/AudioManager");
+                instantiate = Instantiate(resource);
+            }
+
+            return instantiate;
+        }
+    }
+
+    private void Awake()
     {
         DontDestroyOnLoad(this);
-        if (Instantiate == null) { Instantiate = this; } else { Destroy(this); }
     }
+
     private void Start()
     {
         ChangeMusicVolume();
         ChangeSoundsVolume();
         PlayMenuMusic();
     }
-    public void PlayMenuMusic() { backgroundMusic.clip = mainMenuMusic; backgroundMusic.Play();  }
-    public void PlayGameMusic() { backgroundMusic.clip = gameMusic; backgroundMusic.Play(); }
+
+    public void PlayMenuMusic() 
+    { 
+        backgroundMusic.clip = mainMenuMusic;
+        backgroundMusic.Play(); 
+    
+    }
+
+    public void PlayGameMusic() 
+    { 
+        backgroundMusic.clip = gameMusic;
+        backgroundMusic.Play(); 
+    }
+
     public void PlayerJumpSoundPlay(string PlatformTag)
     {
         if (PlatformTag == "Platform")
         {
-            jumpAndButtonSounds.pitch = 1f;
+            jumpAndSounds.pitch = 1f;
         }
         else if (PlatformTag == "DoubleJumpPlatform")
         {
-            jumpAndButtonSounds.pitch = 1.4f;
+            jumpAndSounds.pitch = 1.4f;
         }
 
-        jumpAndButtonSounds.Play();
+        jumpAndSounds.Play();
     }
 
     public void CoinCollectedSoundPlay()
@@ -76,25 +103,25 @@ public class AudioManager : MonoBehaviour
     {
         if (SettingsAssistant.IsSoundsPlaying)
         {
-            if (jumpAndButtonSounds != null)
-                jumpAndButtonSounds.volume = soundsVolume;
+            if (jumpAndSounds != null)
+                jumpAndSounds.volume = soundsVolume;
 
             if (coinAndDieSounds != null)
                 coinAndDieSounds.volume = soundsVolume;
 
-          //  if (soundsButton != null)
+            //  if (soundsButton != null)
             //    soundsButton.image.sprite = soundsOnImage;
         }
         else
         {
-            if (jumpAndButtonSounds != null)
-                jumpAndButtonSounds.volume = 0f;
+            if (jumpAndSounds != null)
+                jumpAndSounds.volume = 0f;
 
             if (coinAndDieSounds != null)
                 coinAndDieSounds.volume = 0f;
 
-          //  if (soundsButton != null)
-          //      soundsButton.image.sprite = soundsOffImage;
+            //  if (soundsButton != null)
+            //      soundsButton.image.sprite = soundsOffImage;
         }
     }
 

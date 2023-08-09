@@ -36,4 +36,9 @@ public class MenuPlayer : MonoBehaviour
         transform.DORewind();
         transform.DOShakeScale(.5f, .15f, 3, 10);
     }
+
+    private void OnDisable()
+    {
+        DOTween.KillAll();
+    }
 }
