@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,9 +14,9 @@ public class PoolMono<T> where T : MonoBehaviour
     public PoolMono(T prefab, int count)
     {
         this.prefab = prefab;
-        this.container = null;
+        container = null;
 
-        this.CreatePool(count);
+        CreatePool(count);
     }
 
     public PoolMono(T prefab, int count, Transform container)
@@ -25,24 +24,24 @@ public class PoolMono<T> where T : MonoBehaviour
         this.prefab = prefab;
         this.container = container;
 
-        this.CreatePool(count);
+        CreatePool(count);
     }
 
     private void CreatePool(int count)
     {
-        this.pool = new List<T>();
+        pool = new List<T>();
 
         for (int i = 0; i < count; i++)
         {
-            this.CreateObject();
+            CreateObject();
         }
     }
 
     private T CreateObject(bool isActiveByDefault = false)
     {
-        var createdObject = Object.Instantiate(this.prefab, this.container);
+        var createdObject = Object.Instantiate(prefab, container);
         createdObject.gameObject.SetActive(isActiveByDefault);
-        this.pool.Add(createdObject);
+        pool.Add(createdObject);
         return createdObject;
     }
 
@@ -64,11 +63,11 @@ public class PoolMono<T> where T : MonoBehaviour
 
     public T GetFreeElement()
     {
-        if (this.HasFreeElement(out var element))
+        if (HasFreeElement(out var element))
             return element;
 
-        if (this.autoExpand)
-            return this.CreateObject(true);
+        if (autoExpand)
+            return CreateObject(true);
 
         throw new System.Exception($"There is no free elements in pool of type {typeof(T)}");
     }

@@ -1,28 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public bool isShowedByCamera;
-
-    private void OnBecameVisible()
+    private void OnEnable()
     {
-        isShowedByCamera = true;
+        GameEventManager.OnActivePlatformEvent.AddListener(ActivePlatform);
     }
 
-    private void OnBecameInvisible()
+    private void OnDisable()
     {
-        if (isShowedByCamera)
-        {
-            DeActivate();
-        }
+        GameEventManager.OnActivePlatformEvent.RemoveListener(ActivePlatform);
     }
 
-    public void DeActivate()
+    public void ActivePlatform(int current_Y_playerPosition)
     {
-        Debug.Log("Deactivate "+gameObject.name);
-        isShowedByCamera = false;
-        gameObject.SetActive(false);
+        if (current_Y_playerPosition >= Mathf.FloorToInt(transform.position.y) + 5)
+            gameObject.SetActive(false);
     }
 }

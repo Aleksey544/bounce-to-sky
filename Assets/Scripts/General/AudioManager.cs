@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip coinClip;
     [SerializeField] private AudioClip[] screamingClips;
     [SerializeField] private AudioSource backgroundMusic;
-    [SerializeField] private AudioSource jumpAndSounds;
+    [SerializeField] private AudioSource jumpSounds;
     [SerializeField] private AudioSource coinSound;
     [SerializeField] private AudioSource screamSound;
 
@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        PlayMenuMusic();
     }
 
     //private void Start()
@@ -46,14 +47,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMenuMusic()
     {
-        backgroundMusic.clip = mainMenuMusic;
-        backgroundMusic.Play();
-
+        if (SettingsAssistant.IsMusicPlaying)
+        {
+            backgroundMusic.volume = musicVolume;
+            backgroundMusic.clip = mainMenuMusic;
+            backgroundMusic.Play();
+        }
+        else
+        {
+            backgroundMusic.volume = 0;
+        }
     }
 
     public void PlayGameMusic()
     {
-        if (backgroundMusic.clip != gameMusic)
+        if (backgroundMusic.clip != gameMusic && SettingsAssistant.IsMusicPlaying)
         {
             backgroundMusic.clip = gameMusic;
             backgroundMusic.Play();
@@ -64,14 +72,14 @@ public class AudioManager : MonoBehaviour
     {
         if (PlatformTag == "Platform")
         {
-            jumpAndSounds.pitch = 1f;
+            jumpSounds.pitch = 1f;
         }
         else if (PlatformTag == "DoubleJumpPlatform")
         {
-            jumpAndSounds.pitch = 1.4f;
+            jumpSounds.pitch = 1.4f;
         }
 
-        jumpAndSounds.Play();
+        jumpSounds.Play();
     }
 
     public void CoinCollectedSoundPlay()
@@ -92,13 +100,11 @@ public class AudioManager : MonoBehaviour
     {
         if (SettingsAssistant.IsMusicPlaying)
         {
-            if (backgroundMusic != null)
-                backgroundMusic.volume = musicVolume;
+            backgroundMusic.volume = musicVolume;
         }
         else
         {
-            if (backgroundMusic != null)
-                backgroundMusic.volume = 0f;
+            backgroundMusic.volume = 0f;
         }
     }
 
@@ -106,34 +112,16 @@ public class AudioManager : MonoBehaviour
     {
         if (SettingsAssistant.IsSoundsPlaying)
         {
-            if (jumpAndSounds != null)
-                jumpAndSounds.volume = soundsVolume;
-
-            if (coinSound != null)
-                coinSound.volume = soundsVolume;
-
-            if (screamSound != null)
-            {
-                screamSound.volume = 1f;
-                Debug.Log("screamSound.volume = 1f");
-            }
-
-            //  if (soundsButton != null)
-            //    soundsButton.image.sprite = soundsOnImage;
+            jumpSounds.volume = soundsVolume;
+            coinSound.volume = soundsVolume;
+            screamSound.volume = 1f;
+            Debug.Log("screamSound.volume = 1f");
         }
         else
         {
-            if (jumpAndSounds != null)
-                jumpAndSounds.volume = 0f;
-
-            if (coinSound != null)
-                coinSound.volume = 0f;
-
-            if (screamSound != null)
-                screamSound.volume = 0f;
-
-            //  if (soundsButton != null)
-            //      soundsButton.image.sprite = soundsOffImage;
+            jumpSounds.volume = 0f;
+            coinSound.volume = 0f;
+            screamSound.volume = 0f;
         }
     }
 

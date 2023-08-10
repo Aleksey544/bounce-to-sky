@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d2c776641bb7de5428587a9d3ad15a6c, type: 3}
   - {fileID: 8300000, guid: 8d8d2909bcfbe2d4b930119e71b71e3c, type: 3}
   backgroundMusic: {fileID: 1695401561827783865}
-  jumpAndSounds: {fileID: 1695401561827783864}
+  jumpSounds: {fileID: 1695401561827783864}
   coinSound: {fileID: 1695401561827783867}
   screamSound: {fileID: 6766917076903574873}
 --- !u!82 &1695401561827783865

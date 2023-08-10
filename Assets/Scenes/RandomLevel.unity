@@ -617,8 +617,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1341645191}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Pause
+        m_TargetAssemblyTypeName: GameButtons, Assembly-CSharp
+        m_MethodName: PauseButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 527317319}
   - component: {fileID: 527317318}
   m_Layer: 0
-  m_Name: PoolBluePlatforms
+  m_Name: BluePlatformsPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolCount: 10
+  poolCount: 1
   autoExpandPool: 1
   platformPrefab: {fileID: -4968011680698549218, guid: eb5c37ecc651ee34e86a2bc7f13a5b34,
     type: 3}
@@ -2048,7 +2048,7 @@ GameObject:
   - component: {fileID: 971087367}
   - component: {fileID: 971087366}
   m_Layer: 0
-  m_Name: 'PoolRedYellowPlatforms '
+  m_Name: RedYellowPlatformsPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolCount: 10
+  poolCount: 1
   autoExpandPool: 1
   platformPrefab: {fileID: 2003642034445209363, guid: 7a7a43ace9f7329408f24b93024178d2,
     type: 3}
@@ -2231,7 +2231,7 @@ GameObject:
   - component: {fileID: 1029045343}
   - component: {fileID: 1029045342}
   m_Layer: 0
-  m_Name: PoolWhiteBlackPlatforms
+  m_Name: WhiteBlackPlatformsPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolCount: 10
+  poolCount: 1
   autoExpandPool: 1
   platformPrefab: {fileID: -6549589080941660622, guid: 88df5a968e4360146a004edb9ea81faa,
     type: 3}
@@ -2696,6 +2696,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359086228}
   m_CullTransparentMesh: 1
+--- !u!1 &1400698054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400698056}
+  - component: {fileID: 1400698055}
+  m_Layer: 0
+  m_Name: CoinsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1400698055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400698054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolCount: 1
+  autoExpandPool: 1
+  platformPrefab: {fileID: 0}
+--- !u!4 &1400698056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400698054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448517513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3516,7 +3563,7 @@ GameObject:
   - component: {fileID: 2024286730}
   - component: {fileID: 2024286729}
   m_Layer: 0
-  m_Name: PoolGreenPlatforms
+  m_Name: GreenPlatformsPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3534,7 +3581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolCount: 10
+  poolCount: 1
   autoExpandPool: 1
   platformPrefab: {fileID: -3963880968019461091, guid: bb38ec30a208da941ab06f3c1f19ce7a,
     type: 3}
@@ -3605,21 +3652,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: BluePlatformsPool
+      value: 
+      objectReference: {fileID: 527317318}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: platformsBluePool
       value: 
       objectReference: {fileID: 527317318}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: GreenPlatformsPool
+      value: 
+      objectReference: {fileID: 2024286729}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: platformsGreenPool
       value: 
       objectReference: {fileID: 2024286729}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: initialPlatformCount
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: RedYellowPlatformsPool
+      value: 
+      objectReference: {fileID: 971087366}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: platformsRedYellowPool
       value: 
       objectReference: {fileID: 971087366}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: WhiteBlackPlatformsPool
+      value: 
+      objectReference: {fileID: 1029045342}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: platformsWhiteBlackPool
       value: 
@@ -3701,6 +3764,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: fcf7d1029ae5ee44cb9e0b1f16ae9ea8, type: 3}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
+      propertyPath: targetFPS
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1341645191}
@@ -3709,6 +3777,11 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
+      propertyPath: levelGenerator
+      value: 
+      objectReference: {fileID: 1144855380766405022}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: screamingSound
@@ -3726,6 +3799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
+      propertyPath: levelGenerationCounter
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
       propertyPath: jumpSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: fcf7d1029ae5ee44cb9e0b1f16ae9ea8, type: 3}
@@ -3734,6 +3812,11 @@ PrefabInstance:
       propertyPath: jumpSounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: e4ce3019e1f437d48a9e865ad7d2fad2, type: 3}
+    - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
+      propertyPath: platformGenerationCounter
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: screamingSounds.Array.size
@@ -3918,6 +4001,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2ade0c63bdc2f24285c75c7036cb31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1144855380766405022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975,
+    type: 3}
+  m_PrefabInstance: {fileID: 665935404894384229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296274446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c00d32acbc92142866b62a1aa718a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5312473610669668621

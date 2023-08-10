@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     public float doubleJumpPowerUpCoefficient;
     public float doubleJumpForwardCoefficient;
     public float speedCoefficient;
-    public int platformGenerationCounter;
     private string movementButton;
     public int targetFPS = 60;
     public int Score = 0;
@@ -22,6 +21,8 @@ public class PlayerManager : MonoBehaviour
     public TMP_Text CoinsText;
     public GameButtons gameManager;
     public AudioManager audioManager;
+    public LevelGenerator levelGenerator;
+    public int levelGenerationCounter;
     private bool isPlayerDied = false;
 
     private void Awake()
@@ -64,13 +65,11 @@ public class PlayerManager : MonoBehaviour
 
     private void GeneratePlatforms()
     {
-        if (Mathf.FloorToInt(transform.position.y) > Mathf.FloorToInt(playerPosition.y + platformGenerationCounter))
+        if (Mathf.FloorToInt(transform.position.y) > Mathf.FloorToInt(playerPosition.y + levelGenerationCounter))
         {
-            LevelGenerator platformGenerator = FindObjectOfType<LevelGenerator>();
-
-            if (platformGenerator != null)
+            if (levelGenerator != null)
             {
-                platformGenerator.GeneratePlatforms(platformGenerationCounter + 1);
+                levelGenerator.GeneratePlatforms(levelGenerationCounter + 1);
                 playerPosition.y = transform.position.y;
             }
         }
@@ -99,6 +98,7 @@ public class PlayerManager : MonoBehaviour
     {
         Score = Mathf.FloorToInt(transform.position.y);
         ScoreText.text = Score.ToString();
+        GameEventManager.DeActivatePlatform(Score);
     }
 
     public void AddCoins()

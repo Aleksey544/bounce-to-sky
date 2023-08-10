@@ -8,10 +8,11 @@ public class LevelGenerator : MonoBehaviour
 	public GameObject GreenPlatform;
 	public GameObject RedYellowPlatform;
 
-    public PoolExample platformsWhiteBlackPool;
-    public PoolExample platformsBluePool;
-    public PoolExample platformsRedYellowPool;
-    public PoolExample platformsGreenPool;
+    public PoolObject WhiteBlackPlatformsPool;
+    public PoolObject BluePlatformsPool;
+    public PoolObject GreenPlatformsPool;
+    public PoolObject RedYellowPlatformsPool;
+    public PoolObject CoinsPool;
 
     public GameObject Coin;
 	public int initialPlatformCount = 15;
@@ -52,29 +53,30 @@ public class LevelGenerator : MonoBehaviour
         {
             randomPlatform = Random.Range(1, 8);
             randomCoin = Random.Range(1, 7);
-           PoolExample selectedPool = null;
+            PoolObject selectedPool = null;
+
             switch (randomPlatform)
             {
                 case 1:
                 case 2:
                 case 3:
-                    selectedPool = platformsWhiteBlackPool;
+                    selectedPool = WhiteBlackPlatformsPool;
                     if (randomCoin == 1)
                         isGenerateCoin = true;
                     break;
                 case 4:
                 case 5:
-                    selectedPool = platformsBluePool;
+                    selectedPool = BluePlatformsPool;
                     if (randomCoin == 3)
                         isGenerateCoin = true;
                     break;
                 case 6:
-                    selectedPool = platformsGreenPool;
+                    selectedPool = GreenPlatformsPool;
                     if (randomCoin == 6)
                         isGenerateCoin = true;
                     break;
                 case 7:
-                    selectedPool = platformsRedYellowPool;
+                    selectedPool = RedYellowPlatformsPool;
                     break;
             }
 
@@ -84,7 +86,8 @@ public class LevelGenerator : MonoBehaviour
             if (isGenerateCoin)
             {
                 coinPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement + yCoinIncrement, generatedPlatformLevel * zIncrement);
-                GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
+                //GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
+                Platform tempCoin = InstantiatePlatform(CoinsPool, coinPosition);
                 tempCoin.transform.SetParent(tempPlatform.transform);
                 isGenerateCoin = false;
             }
@@ -93,9 +96,9 @@ public class LevelGenerator : MonoBehaviour
         generatedPlatformLevel++;
 	}
 
-    private Platform InstantiatePlatform(PoolExample selectedPool, Vector3 platformPosition)
+    private Platform InstantiatePlatform(PoolObject selectedPool, Vector3 platformPosition)
     {
-        var platform = selectedPool.GetPlatform(); 
+        Platform platform = selectedPool.GetPlatform();
         platform.transform.position = platformPosition;
         return platform;
     }
