@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -36,7 +33,8 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        PlayMenuMusic();
+        ChangeMusicVolume();
+        ChangeSoundsVolume();
     }
 
     //private void Start()
@@ -99,13 +97,9 @@ public class AudioManager : MonoBehaviour
     private void ChangeMusicVolume()
     {
         if (SettingsAssistant.IsMusicPlaying)
-        {
             backgroundMusic.volume = musicVolume;
-        }
         else
-        {
             backgroundMusic.volume = 0f;
-        }
     }
 
     private void ChangeSoundsVolume()
@@ -128,28 +122,20 @@ public class AudioManager : MonoBehaviour
     public void SoundsButtonPressed()
     {
         if (SettingsAssistant.IsSoundsPlaying)
-        {
             SettingsAssistant.IsSoundsPlaying = false;
-            ChangeSoundsVolume();
-        }
         else
-        {
             SettingsAssistant.IsSoundsPlaying = true;
-            ChangeSoundsVolume();
-        }
+
+        ChangeSoundsVolume();
     }
 
     public void MusicButtonPressed()
     {
         if (SettingsAssistant.IsMusicPlaying)
-        {
             SettingsAssistant.IsMusicPlaying = false;
-            ChangeMusicVolume();
-        }
         else
-        {
             SettingsAssistant.IsMusicPlaying = true;
-            ChangeMusicVolume();
-        }
+
+        ChangeMusicVolume();
     }
 }

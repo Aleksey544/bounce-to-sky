@@ -1,4 +1,3 @@
-//Скрипт генерации платформ
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -81,15 +80,17 @@ public class LevelGenerator : MonoBehaviour
             }
 
             platformPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement, generatedPlatformLevel * zIncrement);
-            Platform tempPlatform = InstantiatePlatform(selectedPool, platformPosition);
+            Platform tempPlatform = InstantiatePoolObject(selectedPool, platformPosition);
 
             if (isGenerateCoin)
             {
                 coinPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement + yCoinIncrement, generatedPlatformLevel * zIncrement);
-             //   GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
-                Platform tempCoin = InstantiatePlatform(CoinsPool, coinPosition);
+             // GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
+                Platform tempCoin = InstantiatePoolObject(CoinsPool, coinPosition);
                 tempCoin.transform.localRotation = initialCoinRotation;
                 tempCoin.transform.SetParent(tempPlatform.transform);
+                CoinMovement coin = tempCoin.GetComponent<CoinMovement>();
+                coin.SetTarget(tempPlatform.PlatformModel);
                 isGenerateCoin = false;
             }
         }
@@ -97,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
         generatedPlatformLevel++;
 	}
 
-    private Platform InstantiatePlatform(PoolObject selectedPool, Vector3 platformPosition)
+    private Platform InstantiatePoolObject(PoolObject selectedPool, Vector3 platformPosition)
     {
         Platform platform = selectedPool.GetPlatform();
         platform.transform.position = platformPosition;

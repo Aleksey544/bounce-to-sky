@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    [SerializeField] private Transform platformModel;
+
+    public Transform PlatformModel { get => platformModel; set => platformModel = value; }
+
     private void OnEnable()
     {
         GameEventManager.OnActivePlatformEvent.AddListener(ActivePlatform);

@@ -34,7 +34,7 @@ public class MenuPlayer : MonoBehaviour
     private void PlayerAnimation()
     {
         transform.DORewind();
-        transform.DOShakeScale(.5f, .15f, 3, 10);
+        transform.DOShakeScale(.5f, .1f, 3, 10);
     }
 
     private void OnDisable()

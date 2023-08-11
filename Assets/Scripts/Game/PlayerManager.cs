@@ -7,19 +7,19 @@ public class PlayerManager : MonoBehaviour
 {
     public Rigidbody player;
     private Vector3 playerPosition;
-    public float speed;
-    public float jumpPowerUp;
-    public float jumpPowerForward;
-    public float doubleJumpPowerUpCoefficient;
-    public float doubleJumpForwardCoefficient;
-    public float speedCoefficient;
+    public float speed = 10;
+    public float jumpPowerUp = 350;
+    public float jumpPowerForward = 80;
+    public float doubleJumpPowerUpCoefficient = 1.5f;
+    public float doubleJumpForwardCoefficient = 1.3f;
+    public float speedCoefficient = 0.7f;
     private string movementButton;
     public int targetFPS = 60;
     public int Score = 0;
     public int CurrentCoins = 0;
     public TMP_Text ScoreText;
     public TMP_Text CoinsText;
-    public GameButtons gameManager;
+    public GameButtons gameButtons;
     private AudioManager audioManager;
     public LevelGenerator levelGenerator;
     public int levelGenerationCounter;
@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
             if (Score > SettingsAssistant.BestScore)
                 SettingsAssistant.BestScore = Score;
 
-            gameManager.GameOver(Score, CurrentCoins);
+            gameButtons.GameOver(Score, CurrentCoins);
         }
     }
 
@@ -92,9 +92,9 @@ public class PlayerManager : MonoBehaviour
 
         DOTween.Kill(this);
 
-        collision.transform.DOScale(new Vector3(1f, 0.4f, 1f), 0.25f).SetId(this).OnComplete(() =>
+        collision.transform.DOScale(new Vector3(1f, 4f, 1f), 0.25f).SetId(this).OnComplete(() =>
         {         
-            collision.transform.DOScale(new Vector3(1f, 0.1f, 1f), 0.25f).SetId(this);
+            collision.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f).SetId(this);
         });
 
         PlayerAnimation();
@@ -158,6 +158,6 @@ public class PlayerManager : MonoBehaviour
     private void PlayerAnimation()
     {
         transform.DORewind();
-        transform.DOShakeScale(.5f, .5f, 3, 10);
+        transform.DOShakeScale(.5f, .3f, 3, 10);
     }
 }

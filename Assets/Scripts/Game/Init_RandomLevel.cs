@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RandomLevel_Init : MonoBehaviour 
+public class Init_RandomLevel : MonoBehaviour 
 {
     private void Start()
     {

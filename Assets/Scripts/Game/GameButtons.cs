@@ -31,7 +31,6 @@ public class GameButtons : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
-        AudioManager.Ins.PlayMenuMusic();
     }
 
     public void RestartButtonPressed()

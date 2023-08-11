@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        transform.Rotate(18f, 0, 0);
+        transform.Rotate(18f, 0, 0); //x = 18
     }
 
     private void LateUpdate()
