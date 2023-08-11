@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public TMP_Text ScoreText;
     public TMP_Text CoinsText;
     public GameButtons gameManager;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
     public LevelGenerator levelGenerator;
     public int levelGenerationCounter;
     private bool isPlayerDied = false;
@@ -89,6 +89,13 @@ public class PlayerManager : MonoBehaviour
 
             audioManager.PlayerJumpSoundPlay("DoubleJumpPlatform");
         }
+
+        DOTween.Kill(this);
+
+        collision.transform.DOScale(new Vector3(1f, 0.4f, 1f), 0.25f).SetId(this).OnComplete(() =>
+        {         
+            collision.transform.DOScale(new Vector3(1f, 0.1f, 1f), 0.25f).SetId(this);
+        });
 
         PlayerAnimation();
         AddScore();

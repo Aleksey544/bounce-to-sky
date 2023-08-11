@@ -86,8 +86,9 @@ public class LevelGenerator : MonoBehaviour
             if (isGenerateCoin)
             {
                 coinPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement + yCoinIncrement, generatedPlatformLevel * zIncrement);
-                //GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
+             //   GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
                 Platform tempCoin = InstantiatePlatform(CoinsPool, coinPosition);
+                tempCoin.transform.localRotation = initialCoinRotation;
                 tempCoin.transform.SetParent(tempPlatform.transform);
                 isGenerateCoin = false;
             }

@@ -557,7 +557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 78.295044, y: -185.1}
+  m_AnchoredPosition: {x: 78.295166, y: -185.09998}
   m_SizeDelta: {x: 102.99, y: 100.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290634528
@@ -2727,7 +2727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: 0}
+  platformPrefab: {fileID: -8642312147908729529, guid: 31f011b0345e1c84887f3e0537b93753,
+    type: 3}
 --- !u!4 &1400698056
 Transform:
   m_ObjectHideFlags: 0
@@ -3652,6 +3653,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: CoinsPool
+      value: 
+      objectReference: {fileID: 1400698055}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: BluePlatformsPool
       value: 
       objectReference: {fileID: 527317318}
@@ -3669,7 +3674,7 @@ PrefabInstance:
       objectReference: {fileID: 2024286729}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: initialPlatformCount
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: RedYellowPlatformsPool
@@ -3705,7 +3710,7 @@ PrefabInstance:
     - target: {fileID: 2661779310801780236, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780236, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
