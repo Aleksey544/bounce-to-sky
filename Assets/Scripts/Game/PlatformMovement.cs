@@ -19,7 +19,7 @@ public class PlatformMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.DOLocalMoveX(3f, 2.5f).SetLoops(-1, LoopType.Yoyo).SetId(this).SetEase(Easing);
+        transform.DOLocalMoveX(1.5f, 2.5f).SetLoops(-1, LoopType.Yoyo).SetId(this).SetEase(Easing);
     }
 
     private void OnDisable()

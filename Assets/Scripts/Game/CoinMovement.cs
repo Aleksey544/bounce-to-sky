@@ -32,4 +32,9 @@ public class CoinMovement : MonoBehaviour
     {
         target = platformModel;
     }
+
+    internal void SetMoneyLayer()
+    {
+        transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Money");
+    }
 }

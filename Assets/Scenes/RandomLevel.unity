@@ -1178,6 +1178,54 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 5312473610669668621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &718048546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718048548}
+  - component: {fileID: 718048547}
+  m_Layer: 0
+  m_Name: MagnetsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &718048547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718048546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolCount: 1
+  autoExpandPool: 1
+  platformPrefab: {fileID: 5170433618406815572, guid: af877883cce4cbe4d8ebf0cc4859d7b6,
+    type: 3}
+--- !u!4 &718048548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718048546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725139345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3717,6 +3765,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1400698055}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: MagnetsPool
+      value: 
+      objectReference: {fileID: 718048547}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: BluePlatformsPool
       value: 
       objectReference: {fileID: 527317318}
@@ -3756,6 +3808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661779310801780233, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780236, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}

@@ -12,14 +12,16 @@ public class LevelGenerator : MonoBehaviour
     public PoolObject GreenPlatformsPool;
     public PoolObject RedYellowPlatformsPool;
     public PoolObject CoinsPool;
-
+    public PoolObject MagnetsPool;
     public GameObject Coin;
+    private Platform reward;
 	public int initialPlatformCount = 15;
 	public float yIncrement = 1;
 	public float zIncrement = 2;
 	public float yCoinIncrement = 0.7f;
 	private int randomPlatform;
 	private int randomCoin;
+    private int randomMagnet;
 	private bool isGenerateCoin;
 	private float[] platformsXPositions = new float[3];
 	public float[] platformsXPositionsRanges = new float[6] {-7.0f, -4.0f, -1.5f, 1.5f, 4.0f, 7.0f};
@@ -51,7 +53,7 @@ public class LevelGenerator : MonoBehaviour
 		for (int i = 0; i < 3; i++)
         {
             randomPlatform = Random.Range(1, 8);
-            randomCoin = Random.Range(1, 7);
+            randomCoin = Random.Range(1, 4);
             PoolObject selectedPool = null;
 
             switch (randomPlatform)
@@ -66,12 +68,12 @@ public class LevelGenerator : MonoBehaviour
                 case 4:
                 case 5:
                     selectedPool = BluePlatformsPool;
-                    if (randomCoin == 3)
+                    if (randomCoin == 2)
                         isGenerateCoin = true;
                     break;
                 case 6:
                     selectedPool = GreenPlatformsPool;
-                    if (randomCoin == 6)
+                    if (randomCoin == 3)
                         isGenerateCoin = true;
                     break;
                 case 7:
@@ -84,12 +86,22 @@ public class LevelGenerator : MonoBehaviour
 
             if (isGenerateCoin)
             {
+                randomMagnet = Random.Range(1, 8);
                 coinPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement + yCoinIncrement, generatedPlatformLevel * zIncrement);
              // GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
-                Platform tempCoin = InstantiatePoolObject(CoinsPool, coinPosition);
-                tempCoin.transform.localRotation = initialCoinRotation;
-                tempCoin.transform.SetParent(tempPlatform.transform);
-                CoinMovement coin = tempCoin.GetComponent<CoinMovement>();
+                if (randomMagnet == 1)
+                    reward = InstantiatePoolObject(MagnetsPool, coinPosition);
+                else
+                    reward = InstantiatePoolObject(CoinsPool, coinPosition);
+
+                reward.transform.localRotation = initialCoinRotation;
+                reward.transform.SetParent(tempPlatform.transform);
+                CoinMovement coin = reward.GetComponent<CoinMovement>();
+                if (coin == null) 
+                {
+                    coin = reward.gameObject.AddComponent<CoinMovement>();
+                }
+                coin.SetMoneyLayer();
                 coin.SetTarget(tempPlatform.PlatformModel);
                 isGenerateCoin = false;
             }
