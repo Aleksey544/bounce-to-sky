@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8760653208200727425}
   - component: {fileID: -6549589080941660622}
   - component: {fileID: -2752637754428686959}
+  - component: {fileID: 4123945980216731759}
   m_Layer: 0
   m_Name: WhiteBlackPlatform
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21977b8c453f2c94396f35bbf22747e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformModel: {fileID: 4773994986270825931}
+  elementPrefab: {fileID: 0}
 --- !u!23 &-2752637754428686959
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -186,3 +187,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4123945980216731759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760653208200727429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b5bd4a4d8de184a9d5ee421eadc6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformMovement: {fileID: 0}
+  content: {fileID: 4773994986270825931}

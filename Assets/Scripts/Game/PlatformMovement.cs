@@ -5,38 +5,27 @@ using System;
 
 public class PlatformMovement : MonoBehaviour
 {
-    public AnimationCurve Easing;
-    private Vector3 targetPosition;
-    private Vector3 startPosition;
-
-    void Start()
+    public Vector3 defaultPosition;
+    public void Init()
     {
-        startPosition = transform.localPosition;
-        targetPosition = transform.localPosition + Vector3.right * 3;
-        
-        //StartCoroutine(MoveCoroutine());
+        Debug.Log("Init");
+        DOTween.Kill(GetId());
+        transform.localPosition = defaultPosition;
+        transform.DOLocalMoveX(0.75f, 2.5f).SetLoops(-1, LoopType.Yoyo).SetId(GetId()).SetEase(Ease.InOutSine);
+    }
+
+    private int GetId()
+    {
+        return gameObject.GetInstanceID();
     }
 
     private void OnEnable()
     {
-        transform.DOLocalMoveX(1.5f, 2.5f).SetLoops(-1, LoopType.Yoyo).SetId(this).SetEase(Easing);
+        
     }
 
     private void OnDisable()
     {
-        DOTween.Kill(this);
-    }
-
-    IEnumerator MoveCoroutine()
-    {
-        while (true)
-        {
-            for (float i = 0; i < 1; i += Time.deltaTime / 3)
-            {
-                transform.localPosition = Vector3.Lerp(startPosition, targetPosition, Easing.Evaluate(i));
-
-                yield return null;
-            }
-        }
+        DOTween.Kill(GetId());
     }
 }

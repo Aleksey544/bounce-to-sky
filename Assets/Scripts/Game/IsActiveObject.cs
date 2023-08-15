@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DestroyObjectScript : MonoBehaviour
+public class IsActiveObject : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {

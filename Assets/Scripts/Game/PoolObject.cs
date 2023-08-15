@@ -4,17 +4,17 @@ public class PoolObject : MonoBehaviour
 {
     [SerializeField] private int poolCount;
     [SerializeField] private bool autoExpandPool;
-    [SerializeField] private Platform platformPrefab;
+    [SerializeField] private LevelElement platformPrefab;
 
-    private PoolMono<Platform> pool;
+    private PoolMono<LevelElement> pool;
 
     private void Awake()
     {
-        pool = new PoolMono<Platform>(platformPrefab, poolCount, transform);
+        pool = new PoolMono<LevelElement>(platformPrefab, poolCount, transform);
         pool.autoExpand = autoExpandPool;
     }
 
-    public Platform GetPlatform()
+    public LevelElement GetPlatform()
     {
         return pool.GetFreeElement();
     }

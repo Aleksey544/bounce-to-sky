@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (levelGenerator != null)
             {
-                levelGenerator.GeneratePlatforms(levelGenerationCounter + 1);
+                levelGenerator.GenerateCustomPlatformSublevels(levelGenerationCounter + 1);
                 playerPosition.y = transform.position.y;
             }
         }
@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour
     {
         Score = Mathf.FloorToInt(transform.position.y);
         ScoreText.text = Score.ToString();
-        GameEventManager.DeActivatePlatform(Score);
+        GameEventManager.DeActivateElement(Score);
     }
 
     public void AddCoins()

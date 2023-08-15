@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerMagnet : MonoBehaviour
+public class MagnetEquipped : MonoBehaviour
 {
     private float duration = 10f;
     private float radius = 10f;
@@ -24,7 +24,11 @@ public class PlayerMagnet : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.gameObject.AddComponent<MagnetMover>().Init(transform);
+            CollectibleItem tempItem = hitCollider.GetComponent<CollectibleItem>();
+
+            if (tempItem != null)
+                tempItem.Magnetize(transform);
+
             Debug.Log(hitCollider.gameObject.name);
         }
     }
@@ -37,7 +41,6 @@ public class PlayerMagnet : MonoBehaviour
 
     public async Task MagnetTask()
     {
-
         Debug.Log("work magnet");
         await Task.Delay(TimeSpan.FromSeconds(duration));
         Destroy(this);

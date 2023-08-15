@@ -3,11 +3,11 @@ using UnityEngine.Events;
 
 public class GameEventManager
 {
-    public static UnityEvent<int> OnActivePlatformEvent = new UnityEvent<int>();
+    public static UnityEvent<int> OnActiveLevelElementEvent = new UnityEvent<int>();
 
-    public static void DeActivatePlatform(int Y_playerPosition)
+    public static void DeActivateElement(int Y_playerPosition)
     {
-        if (OnActivePlatformEvent != null)
-            OnActivePlatformEvent.Invoke(Y_playerPosition);
+        if (OnActiveLevelElementEvent != null)
+            OnActiveLevelElementEvent.Invoke(Y_playerPosition);
     }
 }
