@@ -62,7 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  offsetFromTarget: {x: 0, y: 0.8, z: 0}
 --- !u!65 &6066292756927771008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88,6 +87,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccd107163cd2fe428fc9d6a3c4d9a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMagnetize: 0
+  platformTarget: {fileID: 0}
+  offsetFromTarget: {x: 0, y: 0.75, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &3177937162930887973
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ public class CollectibleItem : MonoBehaviour
     [SerializeField] private Vector3 offsetFromTarget = new Vector3(0, 0.3f, 0);
     [SerializeField] LayerMask layerMask;
 
-    public virtual void Init(PlatformItem platform) {
+    public virtual void Init(Transform targetPlatfrom) {
         SetLayerMask();
         DeleteMagnet();
-        SetToPlatform(platform);
+        platformTarget = targetPlatfrom.transform;
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -30,11 +30,6 @@ public class CollectibleItem : MonoBehaviour
 
 
 
-    public void SetToPlatform(PlatformItem platform)
-    {
-        platformTarget = platform.transform;
-    }
-
     public void RemoveFromPlatform() 
     {
       platformTarget = null;
@@ -44,7 +39,7 @@ public class CollectibleItem : MonoBehaviour
 
 
 
-    public void Update()
+    private void Update()
     {
         if (platformTarget != null)
         {
@@ -58,13 +53,22 @@ public class CollectibleItem : MonoBehaviour
 
         transform.gameObject.layer = LayerMask.NameToLayer("Default");
         gameObject.AddComponent<MagnetMover>().Init(playerTransform);
+        RemoveFromPlatform();
         //CollectibleItemRotator coinMovement = transform.GetComponent<CollectibleItemRotator>();
         //Destroy(coinMovement);
     }
 
     internal void SetLayerMask()
     {
-        transform.gameObject.layer = layerMask;
+        transform.gameObject.layer =  ToLayer (layerMask);
     }
-
+    
+    public static int ToLayer ( int bitmask ) {
+        int result = bitmask>0 ? 0 : 31;
+        while( bitmask>1 ) {
+            bitmask = bitmask>>1;
+            result++;
+        }
+        return result;
+    }
 }

@@ -10,12 +10,10 @@ public class MagnetEquipped : MonoBehaviour
 
     private async void Start()
     {
-        Debug.Log("Start magnet");
-
+        //Debug.Log("Start magnet");
         coinMask = 1<<LayerMask.NameToLayer("Money");
-
         await MagnetTask();
-        Debug.Log("end magnet");
+       // Debug.Log("end magnet");
     }
 
     public void FixedUpdate()
@@ -41,7 +39,7 @@ public class MagnetEquipped : MonoBehaviour
 
     public async Task MagnetTask()
     {
-        Debug.Log("work magnet");
+       // Debug.Log("work magnet");
         await Task.Delay(TimeSpan.FromSeconds(duration));
         Destroy(this);
     }

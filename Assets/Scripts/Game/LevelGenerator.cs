@@ -33,14 +33,14 @@ public class LevelGenerator : MonoBehaviour
     private Quaternion initialCoinRotation;
     private int generatedPlatformLevel = 2;
 
-    // Начальная генерация уровня
+    // РќР°С‡Р°Р»СЊРЅР°СЏ РіРµРЅРµСЂР°С†РёСЏ СѓСЂРѕРІРЅСЏ
     private void Start()
     {
         initialCoinRotation = Coin.transform.rotation;
         GenerateCustomPlatformSublevels(initialPlatformSublevelsCount);
     }
 
-    // Генерация произвольного кол-ва подуровней платформ
+    // Р“РµРЅРµСЂР°С†РёСЏ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРіРѕ РєРѕР»-РІР° РїРѕРґСѓСЂРѕРІРЅРµР№ РїР»Р°С‚С„РѕСЂРј
     public void GenerateCustomPlatformSublevels(int sublevelsCount)
     {
         for (int i = 0; i < sublevelsCount; i++)
@@ -49,7 +49,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    // Основная логика генерации одного подуровня платформ (в одном подуровне предполагается 3 платформы)
+    // РћСЃРЅРѕРІРЅР°СЏ Р»РѕРіРёРєР° РіРµРЅРµСЂР°С†РёРё РѕРґРЅРѕРіРѕ РїРѕРґСѓСЂРѕРІРЅСЏ РїР»Р°С‚С„РѕСЂРј (РІ РѕРґРЅРѕРј РїРѕРґСѓСЂРѕРІРЅРµ РїСЂРµРґРїРѕР»Р°РіР°РµС‚СЃСЏ 3 РїР»Р°С‚С„РѕСЂРјС‹)
 	private void GenerateOnePlatformSublevels()
 	{
 		platformsXPositions[0] = Random.Range(platformsXPositionsRanges[0], platformsXPositionsRanges[1]);
@@ -108,14 +108,14 @@ public class LevelGenerator : MonoBehaviour
         generatedPlatformLevel++;
 	}
 
-    // Основная логика генерации предметов, которые подбирает игрок
+    // РћСЃРЅРѕРІРЅР°СЏ Р»РѕРіРёРєР° РіРµРЅРµСЂР°С†РёРё РїСЂРµРґРјРµС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РїРѕРґР±РёСЂР°РµС‚ РёРіСЂРѕРє
     private void GenerateCollectibleItems(PoolObject itemsPool)
     {
         collectibleItem = InstantiatePoolObject(itemsPool, collectibleItemPosition);
         collectibleItem.transform.localRotation = initialCoinRotation;
         //collectibleItem.transform.SetParent(tempPlatform.transform);
         CollectibleItem tempItem = collectibleItem.GetComponent<CollectibleItem>();
-        tempItem.Init(tempPlatformItem);
+        tempItem.Init(tempPlatformItem.GetPlatformContent());
        
        // tempPlatform.GetComponent<PlatformItem>().AddContentToChild(collectibleItem.transform);
 

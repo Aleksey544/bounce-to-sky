@@ -76,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMagnetize: 1
   platformTarget: {fileID: 0}
-  offsetFromTarget: {x: 0, y: 0.6, z: 0}
+  offsetFromTarget: {x: 0, y: 0.75, z: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 8
