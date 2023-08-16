@@ -77,9 +77,7 @@ MonoBehaviour:
   isMagnetize: 1
   platformTarget: {fileID: 0}
   offsetFromTarget: {x: 0, y: 0.75, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  layerMask: Money
 --- !u!135 &8564405244665859061
 SphereCollider:
   m_ObjectHideFlags: 0

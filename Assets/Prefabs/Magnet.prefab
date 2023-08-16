@@ -90,9 +90,7 @@ MonoBehaviour:
   isMagnetize: 0
   platformTarget: {fileID: 0}
   offsetFromTarget: {x: 0, y: 0.75, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
+  layerMask: Default
 --- !u!1 &3177937162930887973
 GameObject:
   m_ObjectHideFlags: 0

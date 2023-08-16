@@ -13,7 +13,7 @@ public class LevelGenerator : MonoBehaviour
     public PoolObject RedYellowPlatformsPool;
     public PoolObject CoinsPool;
     public PoolObject MagnetsPool;
-  //  public CollectibleItemRotator Coin;
+  //public CollectibleItemRotator Coin;
     public CoinItem Coin;
     private LevelElement collectibleItem;
     private LevelElement tempPlatform;
@@ -113,9 +113,9 @@ public class LevelGenerator : MonoBehaviour
     {
         collectibleItem = InstantiatePoolObject(itemsPool, collectibleItemPosition);
         collectibleItem.transform.localRotation = initialCoinRotation;
+        //collectibleItem.transform.position = tempPlatform.transform.position; 
         //collectibleItem.transform.SetParent(tempPlatform.transform);
-        CollectibleItem tempItem = collectibleItem.GetComponent<CollectibleItem>();
-        tempItem.Init(tempPlatformItem.GetPlatformContent());
+        collectibleItem.GetComponent<CollectibleItem>().Init(tempPlatformItem.GetPlatformContent());
        
        // tempPlatform.GetComponent<PlatformItem>().AddContentToChild(collectibleItem.transform);
 

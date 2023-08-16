@@ -16,6 +16,11 @@ public class MagnetMover : MonoBehaviour
        
     }
 
+    public void Delete()
+    {
+        Destroy(this);
+    }
+
     void Update()
     {
         // ¬ычисл€ем направление к целевой точке
@@ -31,6 +36,4 @@ public class MagnetMover : MonoBehaviour
            transform.position += direction * moveSpeed * Time.deltaTime;
         }
     }
-
-  
 }

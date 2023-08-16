@@ -5,12 +5,23 @@ public class CollectibleItem : MonoBehaviour
     [SerializeField] private bool isMagnetize;
     [SerializeField] private Transform platformTarget;
     [SerializeField] private Vector3 offsetFromTarget = new Vector3(0, 0.3f, 0);
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] string layerMask;
+
+    public void OnEnable()
+    {
+        SetIgnoreMagnetingLayer();
+    }
+
+    public void CanMagnetAfterSeconds()
+    {
+        SetLayerMask();
+    }
 
     public virtual void Init(Transform targetPlatfrom) {
-        SetLayerMask();
-        DeleteMagnet();
+        Invoke(nameof(CanMagnetAfterSeconds), 2);
+        transform.position = targetPlatfrom.position;
         platformTarget = targetPlatfrom.transform;
+        DeleteMagnet();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -19,25 +30,21 @@ public class CollectibleItem : MonoBehaviour
         {
             OnPlayerCollect(collider);
             RemoveFromPlatform();
+            SetIgnoreMagnetingLayer();
         }
     }
 
     protected void DeleteMagnet()
     {
-        MagnetMover magnetMover = gameObject.GetComponent<MagnetMover>();
-        if (magnetMover != null) { Destroy(magnetMover); }
+        gameObject.GetComponent<MagnetMover>()?.Delete();      
     }
-
-
 
     public void RemoveFromPlatform() 
     {
-      platformTarget = null;
+        platformTarget = null;
     }
 
     public virtual void OnPlayerCollect(Collider colliderPlayer) { }
-
-
 
     private void Update()
     {
@@ -47,11 +54,16 @@ public class CollectibleItem : MonoBehaviour
         }
     }
 
+    public void SetIgnoreMagnetingLayer() 
+    {
+        transform.gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+
     public void Magnetize(Transform playerTransform)
     {
         if (!isMagnetize) return;
 
-        transform.gameObject.layer = LayerMask.NameToLayer("Default");
+        SetIgnoreMagnetingLayer();
         gameObject.AddComponent<MagnetMover>().Init(playerTransform);
         RemoveFromPlatform();
         //CollectibleItemRotator coinMovement = transform.GetComponent<CollectibleItemRotator>();
@@ -60,15 +72,6 @@ public class CollectibleItem : MonoBehaviour
 
     internal void SetLayerMask()
     {
-        transform.gameObject.layer =  ToLayer (layerMask);
-    }
-    
-    public static int ToLayer ( int bitmask ) {
-        int result = bitmask>0 ? 0 : 31;
-        while( bitmask>1 ) {
-            bitmask = bitmask>>1;
-            result++;
-        }
-        return result;
+        transform.gameObject.layer = LayerMask.NameToLayer(layerMask);
     }
 }
