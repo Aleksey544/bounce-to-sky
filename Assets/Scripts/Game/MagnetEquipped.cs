@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class MagnetEquipped : MonoBehaviour
 {
-    public float duration = 11f;
+    public const float durationSeconds = 10f;
+    private float remainingSeconds = durationSeconds;
     public float radius = 10f;
     private LayerMask coinMask;
     
-
     private async void Start()
     {
         coinMask = 1 << LayerMask.NameToLayer("Money");
 
-        Console.WriteLine("Starting asynchronous operation...");
-        var task = MagnetTask();
-
-        while (!task.IsCompleted)
-        {
-            GameEventManager.SendMagnetRemainingTime(duration - 1);
-            await Task.Delay(1000);
-            duration--;
-        }
+        await MagnetTask();
     }
 
     public async Task MagnetTask()
     {
-        await Task.Delay(TimeSpan.FromSeconds(duration));
+        EventManager.Ins.ActiveMagnetUIElements(true);
+
+        while (remainingSeconds > 0)
+        {
+            EventManager.Ins.SendMagnetRemainingTime(remainingSeconds);
+            await Task.Delay(1000);
+            remainingSeconds--;
+        }
+
+        EventManager.Ins.SendMagnetRemainingTime(remainingSeconds);
+        EventManager.Ins.ActiveMagnetUIElements(false);
         DestroyMagnet();
+    }
+
+    public void AddAdditionalSeconds()
+    {
+        remainingSeconds += durationSeconds;
     }
 
     public void FixedUpdate()
@@ -49,9 +56,9 @@ public class MagnetEquipped : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-
     private void OnDisable()
     {
+        EventManager.Ins.ActiveMagnetUIElements(false);
         DestroyMagnet();
     }
 

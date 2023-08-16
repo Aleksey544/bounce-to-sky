@@ -9,12 +9,12 @@ public class LevelElement : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventManager.OnActiveLevelElementEvent.AddListener(ActiveElement);
+        EventManager.Ins.OnActiveLevelElementEvent.AddListener(ActiveElement);
     }
 
     private void OnDisable()
     {
-        GameEventManager.OnActiveLevelElementEvent.RemoveListener(ActiveElement);
+        EventManager.Ins.OnActiveLevelElementEvent.RemoveListener(ActiveElement);
     }
 
     public void ActiveElement(int current_Y_playerPosition)

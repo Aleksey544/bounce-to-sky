@@ -10,6 +10,10 @@ public class MagnetItem : CollectibleItem
         {
             colliderPlayer.gameObject.AddComponent<MagnetEquipped>();
         }
+        else
+        {
+            playerMagnet.AddAdditionalSeconds();
+        }
 
         gameObject.SetActive(false);
     }

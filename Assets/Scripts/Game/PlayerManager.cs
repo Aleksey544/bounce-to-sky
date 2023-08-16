@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour
     {
         Score = Mathf.FloorToInt(transform.position.y);
         ScoreText.text = Score.ToString();
-        GameEventManager.DeActivateElement(Score);
+        EventManager.Ins.DeActivateElement(Score);
     }
 
     public void AddCoins()

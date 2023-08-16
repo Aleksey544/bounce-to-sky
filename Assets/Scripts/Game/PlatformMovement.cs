@@ -8,7 +8,6 @@ public class PlatformMovement : MonoBehaviour
     public Vector3 defaultPosition;
     public void Init()
     {
-        Debug.Log("Init");
         DOTween.Kill(GetId());
         transform.localPosition = defaultPosition;
         transform.DOLocalMoveX(0.75f, 2.5f).SetLoops(-1, LoopType.Yoyo).SetId(GetId()).SetEase(Ease.InOutSine);

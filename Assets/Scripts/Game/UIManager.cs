@@ -1,17 +1,32 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TMP_Text MagnetRemainingTimeTextTMP;
+    [SerializeField] private TMP_Text MagnetRemainingTimeTextTMP;
+    [SerializeField] private Image MagnetImage;
 
-    private void Start()
+    private void OnEnable()
     {
-        GameEventManager.OnMagnetRemainingTimeEvent.AddListener(UpdateMagnetRemainingTime);
+        EventManager.Ins.OnMagnetRemainingTimeEvent.AddListener(UpdateMagnetRemainingTime);
+        EventManager.Ins.OnActiveMagnetUIElementsEvent.AddListener(ActiveMagnetUIElements);
+    }
+    private void OnDisable()
+    {
+        EventManager.Ins.OnMagnetRemainingTimeEvent.RemoveListener(UpdateMagnetRemainingTime);
+        EventManager.Ins.OnActiveMagnetUIElementsEvent.RemoveListener(ActiveMagnetUIElements);
     }
 
     public void UpdateMagnetRemainingTime(float remainingSeconds)
     {
         MagnetRemainingTimeTextTMP.text = remainingSeconds.ToString();
+    }
+
+    public void ActiveMagnetUIElements(bool isActive)
+    {
+            Debug.Log(isActive);
+            MagnetRemainingTimeTextTMP.enabled = isActive;
+            MagnetImage.enabled = isActive;    
     }
 }
