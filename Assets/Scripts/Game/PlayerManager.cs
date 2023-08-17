@@ -8,8 +8,8 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody player;
     private Vector3 playerPosition;
     public float speed = 10;
-    public float jumpPowerUp = 350;
-    public float jumpPowerForward = 80;
+    public float jumpPowerUp = 370;
+    public float jumpPowerForward = 74;
     public float doubleJumpPowerUpCoefficient = 1.5f;
     public float doubleJumpForwardCoefficient = 1.3f;
     public float speedCoefficient = 0.7f;
@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour
     {
         Score = Mathf.FloorToInt(transform.position.y);
         ScoreText.text = Score.ToString();
-        EventManager.Ins.DeActivateElement(Score);
+        EventManager.DeActivateElement(Score);
     }
 
     public void AddCoins()

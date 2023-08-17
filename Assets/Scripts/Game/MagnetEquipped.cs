@@ -18,17 +18,17 @@ public class MagnetEquipped : MonoBehaviour
 
     public async Task MagnetTask()
     {
-        EventManager.Ins.ActiveMagnetUIElements(true);
+        EventManager.ActiveMagnetUIElements(true);
 
         while (remainingSeconds > 0)
         {
-            EventManager.Ins.SendMagnetRemainingTime(remainingSeconds);
+            EventManager.SendMagnetRemainingTime(remainingSeconds);
             await Task.Delay(1000);
             remainingSeconds--;
         }
 
-        EventManager.Ins.SendMagnetRemainingTime(remainingSeconds);
-        EventManager.Ins.ActiveMagnetUIElements(false);
+        EventManager.SendMagnetRemainingTime(remainingSeconds);
+        EventManager.ActiveMagnetUIElements(false);
         DestroyMagnet();
     }
 
@@ -58,7 +58,7 @@ public class MagnetEquipped : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.Ins.ActiveMagnetUIElements(false);
+        EventManager.ActiveMagnetUIElements(false);
         DestroyMagnet();
     }
 

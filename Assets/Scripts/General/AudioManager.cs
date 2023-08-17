@@ -109,7 +109,6 @@ public class AudioManager : MonoBehaviour
             jumpSounds.volume = soundsVolume;
             coinSound.volume = soundsVolume;
             screamSound.volume = 1f;
-            Debug.Log("screamSound.volume = 1f");
         }
         else
         {

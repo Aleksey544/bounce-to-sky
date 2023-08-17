@@ -9,13 +9,13 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Ins.OnMagnetRemainingTimeEvent.AddListener(UpdateMagnetRemainingTime);
-        EventManager.Ins.OnActiveMagnetUIElementsEvent.AddListener(ActiveMagnetUIElements);
+        EventManager.OnMagnetRemainingTimeEvent.AddListener(UpdateMagnetRemainingTime);
+        EventManager.OnActiveMagnetUIElementsEvent.AddListener(ActiveMagnetUIElements);
     }
     private void OnDisable()
     {
-        EventManager.Ins.OnMagnetRemainingTimeEvent.RemoveListener(UpdateMagnetRemainingTime);
-        EventManager.Ins.OnActiveMagnetUIElementsEvent.RemoveListener(ActiveMagnetUIElements);
+        EventManager.OnMagnetRemainingTimeEvent.RemoveListener(UpdateMagnetRemainingTime);
+        EventManager.OnActiveMagnetUIElementsEvent.RemoveListener(ActiveMagnetUIElements);
     }
 
     public void UpdateMagnetRemainingTime(float remainingSeconds)
@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
 
     public void ActiveMagnetUIElements(bool isActive)
     {
-            Debug.Log(isActive);
             MagnetRemainingTimeTextTMP.enabled = isActive;
             MagnetImage.enabled = isActive;    
     }
