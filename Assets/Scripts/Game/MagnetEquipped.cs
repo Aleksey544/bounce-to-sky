@@ -64,9 +64,11 @@ public class MagnetEquipped : MonoBehaviour
 
     private void DestroyMagnet()
     {
-        if (Application.isPlaying)
-            Destroy(this);
-        else
-            DestroyImmediate(this);
+        remainingSeconds = 0;
+
+        //if (Application.isPlaying)
+        //    Destroy(this);
+        //else
+        //    DestroyImmediate(this);
     }
 }

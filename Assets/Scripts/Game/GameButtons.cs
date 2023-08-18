@@ -26,7 +26,6 @@ public class GameButtons : MonoBehaviour
         Time.timeScale = 0.0f;
     }
 
-
     public void MenuButtonPressed()
     {
         Time.timeScale = 1.0f;

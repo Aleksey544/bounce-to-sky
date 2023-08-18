@@ -115,6 +115,12 @@ public class PlayerManager : MonoBehaviour
         audioManager.CoinCollectedSoundPlay();
     }
 
+    public void DoubleCoinsForWatchAds()
+    {
+        SettingsAssistant.Coins += CurrentCoins;
+        gameButtons.GameOver(Score, CurrentCoins * 2);
+    }
+
     public void SetMovementButton(string pressedButton)
     {
         movementButton = pressedButton;
