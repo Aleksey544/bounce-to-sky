@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
 
-public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class AdsRewarded : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] private Button _doubleCoinsButton;
     [SerializeField] private Button _secondLifeButton;
+    private bool _doubleCoinsAdsNotShowed = true;
+    private bool _secondLifeAdsNotShowed = true;
     [SerializeField] private PlayerManager _playerManager;
     // Id рекламных единиц (placement) в Unity Dashboard
     [SerializeField] private string _doubleCoinsUnityId = "Rewarded_Double_Coins";
@@ -16,9 +18,9 @@ public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
 
     public void Init()
     {
-        LoadAd();
         _doubleCoinsButton.interactable = false;
         _secondLifeButton.interactable = false;
+        LoadAd();
     }
 
     public void NoInteractibleButtons()
@@ -38,12 +40,12 @@ public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
     {
         Debug.Log("OnUnityAdsAdLoaded = " + placementId);
 
-        if (placementId == _doubleCoinsUnityId)
+        if (placementId == _doubleCoinsUnityId && _doubleCoinsAdsNotShowed)
         {
             _doubleCoinsButton.interactable = true;
         }
 
-        if (placementId == _secondLifeUnityId)
+        if (placementId == _secondLifeUnityId && _secondLifeAdsNotShowed)
         {
             _secondLifeButton.interactable = true;
         }
@@ -62,6 +64,7 @@ public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
         if (placementId == _secondLifeUnityId && showCompletionState == UnityAdsShowCompletionState.COMPLETED)
         {
             Debug.Log("Life was seconded === " + placementId);
+            _playerManager.SecondLifeForWatchAds();
         }
 
         // LoadAd();
@@ -71,6 +74,7 @@ public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
     {
         // Android
         _doubleCoinsButton.interactable = false;
+        _doubleCoinsAdsNotShowed = false;
         Advertisement.Show(_doubleCoinsUnityId, this);
     }
 
@@ -78,6 +82,7 @@ public class RewardedAdsButtons : MonoBehaviour, IUnityAdsLoadListener, IUnityAd
     {
         // Android
         _secondLifeButton.interactable = false;
+        _secondLifeAdsNotShowed = false;
         Advertisement.Show(_secondLifeUnityId, this);
     }
 

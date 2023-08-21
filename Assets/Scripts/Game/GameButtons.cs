@@ -9,6 +9,7 @@ public class GameButtons : MonoBehaviour
     public GameObject GamePausedPanel;
     public GameObject GameOverPanel;
     public GameObject ControlButtonsPanel;
+    public GameObject Joystick;
     public GameObject TopPanel;
     public GameObject Player;
 
@@ -40,10 +41,20 @@ public class GameButtons : MonoBehaviour
     public void GameOver(int Score, int CurrentCoins)
     {
         ControlButtonsPanel.SetActive(false);
+        //Joystick.SetActive(false);
         TopPanel.SetActive(false);
         Player.SetActive(false);
         GameOverPanel.SetActive(true);
         GameOverScoreText.text = Score.ToString();
         GameOverCoinsText.text = CurrentCoins.ToString();
+    }
+
+    public void ContinueGame()
+    {
+        ControlButtonsPanel.SetActive(true);
+        //Joystick.SetActive(true);
+        TopPanel.SetActive(true);
+        Player.SetActive(true);
+        GameOverPanel.SetActive(false);
     }
 }

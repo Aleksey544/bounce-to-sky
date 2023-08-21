@@ -6,6 +6,12 @@ public class CollectibleItem : MonoBehaviour
     [SerializeField] private Transform platformTarget;
     [SerializeField] private Vector3 offsetFromTarget = new Vector3(0, 0.3f, 0);
     [SerializeField] string layerMask;
+    private AudioManager audioManager;
+
+    public void Start()
+    {
+        audioManager = AudioManager.Ins;
+    }
 
     public void OnEnable()
     {
@@ -31,6 +37,7 @@ public class CollectibleItem : MonoBehaviour
             OnPlayerCollect(collider);
             RemoveFromPlatform();
             SetIgnoreMagnetingLayer();
+            audioManager.CoinCollectedSoundPlay();
         }
     }
 

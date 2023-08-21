@@ -108,6 +108,12 @@ public class LevelGenerator : MonoBehaviour
         generatedPlatformLevel++;
 	}
 
+    // Генерация одной платформы в произвольном месте (для дополнительной жизни)
+    public void GenerateOnePlatform(Vector3 platformPosition)
+    {
+        tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, platformPosition);
+    }
+
     // Основная логика генерации предметов, которые подбирает игрок
     private void GenerateCollectibleItems(PoolObject itemsPool)
     {

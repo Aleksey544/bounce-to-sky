@@ -12,7 +12,7 @@ public class SettingsAssistant
     private const string BEST_SCORE = "BEST_SCORE";
     private const string IS_SOUNDS_PLAYING = "IS_SOUNDS_PLAYING";
     private const string IS_MUSIC_PLAYING = "IS_MUSIC_PLAYING";
-    private const string IS_GAME_SCENE_RESTARTED = "IS_GAME_SCENE_RESTARTED";
+    // private const string IS_GAME_SCENE_RESTARTED = "IS_GAME_SCENE_RESTARTED";
 
     public static void DeletePrefByKey(string key)
     {
