@@ -27,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
     private int randomMagnet;
     private bool isGenerateCollectibleItem;
     private float[] platformsXPositions = new float[3];
-    public float[] platformsXPositionsRanges = new float[6] { -7.0f, -4.0f, -1.5f, 1.5f, 4.0f, 7.0f };
+    public float[] platformsXPositionsRanges = new float[6] { -7.5f, -4.5f, -1.5f, 1.5f, 4.5f, 7.5f };
     private Vector3 platformPosition;
     private Vector3 collectibleItemPosition;
     private Quaternion initialCoinRotation;
@@ -109,9 +109,11 @@ public class LevelGenerator : MonoBehaviour
 	}
 
     // Генерация одной платформы в произвольном месте (для дополнительной жизни)
-    public void GenerateOnePlatform(Vector3 platformPosition)
+    public void GenerateOnePlatform(Vector3 platformPosition, int platformsCount)
     {
-        tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, platformPosition);
+        for (int i = 0; i < platformsCount; i++)
+            tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, new Vector3
+                (platformPosition.x, (platformPosition.y + i) * yIncrement, platformPosition.z + i * zIncrement));
     }
 
     // Основная логика генерации предметов, которые подбирает игрок

@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         currentPlatformPosition = collision.transform;
-        Debug.Log(currentPlatformPosition);
+        Debug.Log(currentPlatformPosition.position.z);
         DOTween.Kill(this);
 
         collision.transform.DOScale(new Vector3(1f, 4f, 1f), 0.25f).SetId(this).OnComplete(() =>
@@ -132,11 +132,13 @@ public class PlayerManager : MonoBehaviour
         // joystick.SetDefaults();
         gameButtons.ContinueGame();
 
-        GetComponent<LevelGenerator>().GenerateOnePlatform(new Vector3(currentPlatformPosition.position.x,
-            currentPlatformPosition.position.y + 1.5f, currentPlatformPosition.position.z));
+        GetComponent<LevelGenerator>().GenerateOnePlatform(new Vector3(-10.5f,
+            currentPlatformPosition.position.y, currentPlatformPosition.position.z), 4);
 
-        transform.position = new Vector3(currentPlatformPosition.position.x,
-            currentPlatformPosition.position.y + 3f, currentPlatformPosition.position.z);
+        player.velocity = Vector3.zero;
+
+        transform.position = new Vector3(-10.5f,
+            currentPlatformPosition.position.y + 1f, currentPlatformPosition.position.z);
 
         Debug.Log("Game was continue");
     }
