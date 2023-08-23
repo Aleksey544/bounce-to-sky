@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,7 @@ public class GameButtons : MonoBehaviour
 
     public void MenuButtonPressed()
     {
+        DOTween.KillAll();
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
@@ -41,7 +43,6 @@ public class GameButtons : MonoBehaviour
     public void GameOver(int Score, int CurrentCoins)
     {
         ControlButtonsPanel.SetActive(false);
-        //Joystick.SetActive(false);
         TopPanel.SetActive(false);
         Player.SetActive(false);
         GameOverPanel.SetActive(true);
@@ -52,7 +53,6 @@ public class GameButtons : MonoBehaviour
     public void ContinueGame()
     {
         ControlButtonsPanel.SetActive(true);
-        //Joystick.SetActive(true);
         TopPanel.SetActive(true);
         Player.SetActive(true);
         GameOverPanel.SetActive(false);

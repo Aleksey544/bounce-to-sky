@@ -73,8 +73,6 @@ public class CollectibleItem : MonoBehaviour
         SetIgnoreMagnetingLayer();
         gameObject.AddComponent<MagnetMover>().Init(playerTransform);
         RemoveFromPlatform();
-        //CollectibleItemRotator coinMovement = transform.GetComponent<CollectibleItemRotator>();
-        //Destroy(coinMovement);
     }
 
     internal void SetLayerMask()

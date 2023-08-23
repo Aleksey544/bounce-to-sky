@@ -23,7 +23,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 
     void IUnityAdsInitializationListener.OnInitializationComplete()
     {
-        //rewardedAdsButtons.Init();
+
     }
 
     void IUnityAdsInitializationListener.OnInitializationFailed(UnityAdsInitializationError error, string message)

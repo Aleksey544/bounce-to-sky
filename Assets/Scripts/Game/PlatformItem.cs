@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class PlatformItem : MonoBehaviour
@@ -17,4 +18,5 @@ public class PlatformItem : MonoBehaviour
             platformMovement.Init();
         }
     }
+
 }

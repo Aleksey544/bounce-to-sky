@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Drawing;
 using DG.Tweening;
-using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour

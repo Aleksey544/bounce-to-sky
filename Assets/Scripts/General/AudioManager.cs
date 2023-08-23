@@ -37,12 +37,6 @@ public class AudioManager : MonoBehaviour
         ChangeSoundsVolume();
     }
 
-    //private void Start()
-    //{
-    //    ChangeMusicVolume();
-    //    ChangeSoundsVolume();
-    //}
-
     public void PlayMenuMusic()
     {
         if (SettingsAssistant.IsMusicPlaying)

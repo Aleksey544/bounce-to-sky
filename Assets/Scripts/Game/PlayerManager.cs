@@ -25,13 +25,11 @@ public class PlayerManager : MonoBehaviour
     public LevelGenerator levelGenerator;
     public int levelGenerationCounter;
     private bool isPlayerDied = false;
-    // [SerializeField] private Joystick joystick;
 
     private void Awake()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = targetFPS;      
-           
+        Application.targetFrameRate = targetFPS;
     }
 
     private void Start()
@@ -45,7 +43,6 @@ public class PlayerManager : MonoBehaviour
         GeneratePlatforms();
         GetInput();
         PlayerDied();
-        //UpdateInput(joystick.Horizontal, joystick.Vertical);
     }
 
     private void PlayerDied()
@@ -95,13 +92,20 @@ public class PlayerManager : MonoBehaviour
         }
 
         currentPlatformPosition = collision.transform;
-        Debug.Log(currentPlatformPosition.position.z);
-        DOTween.Kill(this);
 
-        collision.transform.DOScale(new Vector3(1f, 4f, 1f), 0.25f).SetId(this).OnComplete(() =>
+        PlatformAnimation collidedPlatform = collision.collider.GetComponent<PlatformAnimation>();
+
+        if (collidedPlatform)
         {
-            collision.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f).SetId(this);
-        });
+            collidedPlatform.PlatformAnimationPush();
+        }
+
+        //DOTween.Kill(this);
+
+        //collision.transform.DOScale(new Vector3(1f, 4f, 1f), 0.25f).SetId(this).OnComplete(() =>
+        //{
+        //    collision.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f).SetId(this);
+        //});
 
         PlayerAnimation();
         AddScore();
@@ -118,7 +122,6 @@ public class PlayerManager : MonoBehaviour
     {
         CurrentCoins++;
         CoinsText.text = CurrentCoins.ToString();
-        // audioManager.CoinCollectedSoundPlay();
     }
 
     public void DoubleCoinsForWatchAds()
@@ -129,7 +132,6 @@ public class PlayerManager : MonoBehaviour
 
     public void SecondLifeForWatchAds()
     {
-        // joystick.SetDefaults();
         gameButtons.ContinueGame();
 
         GetComponent<LevelGenerator>().GenerateOnePlatform(new Vector3(-10.5f,
@@ -139,8 +141,6 @@ public class PlayerManager : MonoBehaviour
 
         transform.position = new Vector3(-10.5f,
             currentPlatformPosition.position.y + 1f, currentPlatformPosition.position.z);
-
-        Debug.Log("Game was continue");
     }
 
     public void SetMovementButton(string pressedButton)
@@ -162,13 +162,6 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKey("s") || movementButton == "Back")
             OnBackButtonPressed();
     }
-
-    //public float inputMultipler = 2;
-    //public void UpdateInput(float horizontal, float vertical)
-    //{
-    //    player.AddForce(horizontal * (speed * Time.deltaTime)* inputMultipler, 0, 0, ForceMode.VelocityChange);
-    //    player.AddForce(0, 0, ((speedCoefficient * speed * Time.deltaTime) * vertical)* inputMultipler, ForceMode.VelocityChange);
-    //}
 
     private void OnRightButtonPressed()
     {

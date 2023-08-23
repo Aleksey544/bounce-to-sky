@@ -3002,17 +3002,27 @@ MonoBehaviour:
   - Name: SoccerballSkin
     Price: 0
   - Name: VolleyballSkin
-    Price: 75
+    Price: 50
   - Name: WaterballSkin
     Price: 150
   - Name: GrassballSkin
     Price: 300
   - Name: SandballSkin
-    Price: 750
+    Price: 500
+  - Name: DirtballSkin
+    Price: 700
+  - Name: LavaballSkin_2
+    Price: 800
+  - Name: MetalballSkin
+    Price: 1000
   - Name: RockballSkin
     Price: 1200
-  - Name: LavaballSkin
+  - Name: RockballSkin_2
+    Price: 1200
+  - Name: TilesballSkin
     Price: 1500
+  - Name: LavaballSkin
+    Price: 2000
   SelectButton: {fileID: 789918826}
   SelectImage: {fileID: 21300000, guid: 70564c6da3c20ea4ba807b2419b68989, type: 3}
   SelectedImage: {fileID: 21300000, guid: 04fcb9ae507a4bd478d35479328b351b, type: 3}

@@ -11,7 +11,6 @@ public class MagnetMover : MonoBehaviour
     public void Init(Transform targetPlayer)
     {
         this.targetPlayer = targetPlayer;
-        //gameObject.layer = LayerMask.NameToLayer("Default");
         transform.parent.SetParent(null, true);
        
     }
