@@ -3011,9 +3011,9 @@ MonoBehaviour:
     Price: 500
   - Name: DirtballSkin
     Price: 700
-  - Name: LavaballSkin_2
-    Price: 800
   - Name: MetalballSkin
+    Price: 800
+  - Name: LavaballSkin_2
     Price: 1000
   - Name: RockballSkin
     Price: 1200

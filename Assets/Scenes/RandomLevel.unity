@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: -4968011680698549218, guid: eb5c37ecc651ee34e86a2bc7f13a5b34,
+  levelElementPrefab: {fileID: -4968011680698549218, guid: eb5c37ecc651ee34e86a2bc7f13a5b34,
     type: 3}
 --- !u!4 &527317319
 Transform:
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: 5170433618406815572, guid: af877883cce4cbe4d8ebf0cc4859d7b6,
+  levelElementPrefab: {fileID: 5170433618406815572, guid: af877883cce4cbe4d8ebf0cc4859d7b6,
     type: 3}
 --- !u!4 &718048548
 Transform:
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: 2003642034445209363, guid: 7a7a43ace9f7329408f24b93024178d2,
+  levelElementPrefab: {fileID: 2003642034445209363, guid: 7a7a43ace9f7329408f24b93024178d2,
     type: 3}
 --- !u!4 &971087367
 Transform:
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: -6549589080941660622, guid: 88df5a968e4360146a004edb9ea81faa,
+  levelElementPrefab: {fileID: -6549589080941660622, guid: 88df5a968e4360146a004edb9ea81faa,
     type: 3}
 --- !u!4 &1029045343
 Transform:
@@ -3276,7 +3276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: -8642312147908729529, guid: 31f011b0345e1c84887f3e0537b93753,
+  levelElementPrefab: {fileID: -8642312147908729529, guid: 31f011b0345e1c84887f3e0537b93753,
     type: 3}
 --- !u!4 &1400698056
 Transform:
@@ -4177,7 +4177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolCount: 1
   autoExpandPool: 1
-  platformPrefab: {fileID: -3963880968019461091, guid: bb38ec30a208da941ab06f3c1f19ce7a,
+  levelElementPrefab: {fileID: -3963880968019461091, guid: bb38ec30a208da941ab06f3c1f19ce7a,
     type: 3}
 --- !u!4 &2024286730
 Transform:
@@ -4416,6 +4416,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1400698055}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: yIncrement
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: zIncrement
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: MagnetsPool
       value: 
       objectReference: {fileID: 718048547}
@@ -4562,7 +4570,7 @@ PrefabInstance:
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: jumpPowerUp
-      value: 370
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
@@ -4582,7 +4590,7 @@ PrefabInstance:
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
       propertyPath: jumpPowerForward
-      value: 74
+      value: 86.3
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
@@ -4618,6 +4626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: screamingSounds.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
+        type: 3}
+      propertyPath: doubleJumpForwardCoefficient
+      value: 1.315
       objectReference: {fileID: 0}
     - target: {fileID: 2661779310801780238, guid: 0da0af5781ddf15419cd68c30bd23975,
         type: 3}
@@ -5178,12 +5191,12 @@ PrefabInstance:
     - target: {fileID: 8760653208200727425, guid: 88df5a968e4360146a004edb9ea81faa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8760653208200727425, guid: 88df5a968e4360146a004edb9ea81faa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8760653208200727425, guid: 88df5a968e4360146a004edb9ea81faa,
         type: 3}

@@ -9,10 +9,10 @@ public class PlayerManager : MonoBehaviour
     private Vector3 playerPosition;
     private Transform currentPlatformPosition;
     public float speed = 10;
-    public float jumpPowerUp = 370;
-    public float jumpPowerForward = 74;
+    public float jumpPowerUp = 400;
+    public float jumpPowerForward = 86.3f;
     public float doubleJumpPowerUpCoefficient = 1.5f;
-    public float doubleJumpForwardCoefficient = 1.3f;
+    public float doubleJumpForwardCoefficient = 1.315f;
     public float speedCoefficient = 0.7f;
     private string movementButton;
     public int targetFPS = 60;
@@ -92,6 +92,8 @@ public class PlayerManager : MonoBehaviour
         }
 
         currentPlatformPosition = collision.transform;
+
+        Debug.Log($"Y: {currentPlatformPosition.position.y}, Z: {currentPlatformPosition.position.z}");
 
         PlatformAnimation collidedPlatform = collision.collider.GetComponent<PlatformAnimation>();
 

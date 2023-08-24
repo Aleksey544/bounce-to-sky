@@ -12,13 +12,15 @@ public class LevelGenerator : MonoBehaviour
     public PoolObject RedYellowPlatformsPool;
     public PoolObject CoinsPool;
     public PoolObject MagnetsPool;
+    public PoolObject SputniksPool;
     public CoinItem Coin;
     private LevelElement collectibleItem;
-    private LevelElement tempPlatform;
-    private PlatformItem tempPlatformItem;
+    private LevelElement generatedPlatform;
+    private LevelElement sputnik;
+    private PlatformItem generatedPlatformItem;
     public int initialPlatformSublevelsCount = 40;
-    public float yIncrement = 1;
-    public float zIncrement = 2;
+    public float yIncrement = 1.25f;
+    public float zIncrement = 2.5f;
     public float yCoinIncrement = 0.7f;
     private int randomPlatform;
     private int randomCollectibleItems;
@@ -28,6 +30,7 @@ public class LevelGenerator : MonoBehaviour
     public float[] platformsXPositionsRanges = new float[6] { -7.5f, -4.5f, -1.5f, 1.5f, 4.5f, 7.5f };
     private Vector3 platformPosition;
     private Vector3 collectibleItemPosition;
+    private Vector3 sputnikPosition;
     private Quaternion initialCoinRotation;
     private int generatedPlatformLevel = 2;
 
@@ -86,9 +89,9 @@ public class LevelGenerator : MonoBehaviour
             }
 
             platformPosition = new Vector3(platformsXPositions[i], generatedPlatformLevel * yIncrement, generatedPlatformLevel * zIncrement);
-            tempPlatform = InstantiatePoolObject(selectedPool, platformPosition);
-            tempPlatformItem = tempPlatform.GetComponent<PlatformItem>();
-            tempPlatformItem?.Init();
+            generatedPlatform = InstantiatePoolObject(selectedPool, platformPosition);
+            generatedPlatformItem = generatedPlatform.GetComponent<PlatformItem>();
+            generatedPlatformItem?.Init();
 
             if (isGenerateCollectibleItem)
             {
@@ -103,15 +106,28 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        //if (Mathf.FloorToInt(platformPosition.y) % 10 == 0)
+        //{
+        //    sputnik = InstantiatePoolObject(SputniksPool, sputnikPosition);
+        //}
+
         generatedPlatformLevel++;
 	}
 
     // Генерация одной платформы в произвольном месте (для дополнительной жизни)
-    public void GenerateOnePlatform(Vector3 platformPosition, int platformsCount)
+    public void GenerateOnePlatform(Vector3 _platformPosition, int platformsCount)
     {
+        Vector3 platformPosition = _platformPosition;
+
         for (int i = 0; i < platformsCount; i++)
-            tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, new Vector3
-                (platformPosition.x, (platformPosition.y + i) * yIncrement, platformPosition.z + i * zIncrement));
+        {
+            generatedPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, platformPosition);
+            platformPosition.Set(platformPosition.x, platformPosition.y + yIncrement, platformPosition.z + zIncrement);
+        }
+        
+        // for (int i = 0; i < platformsCount; i++)
+        //    tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, new Vector3
+        //        (platformPosition.x, (platformPosition.y + i) * yIncrement, platformPosition.z + i * zIncrement));
     }
 
     // Основная логика генерации предметов, которые подбирает игрок
@@ -119,14 +135,14 @@ public class LevelGenerator : MonoBehaviour
     {
         collectibleItem = InstantiatePoolObject(itemsPool, collectibleItemPosition);
         collectibleItem.transform.localRotation = initialCoinRotation;
-        collectibleItem.GetComponent<CollectibleItem>().Init(tempPlatformItem.GetPlatformContent());
+        collectibleItem.GetComponent<CollectibleItem>().Init(generatedPlatformItem.GetPlatformContent());
         isGenerateCollectibleItem = false;
     }
 
-    private LevelElement InstantiatePoolObject(PoolObject selectedPool, Vector3 platformPosition)
+    private LevelElement InstantiatePoolObject(PoolObject selectedPool, Vector3 position)
     {
-        LevelElement platform = selectedPool.GetPlatform();
-        platform.transform.position = platformPosition;
-        return platform;
+        LevelElement element = selectedPool.GetLevelElementPrefab();
+        element.transform.position = position;
+        return element;
     }
 }
