@@ -310,7 +310,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &81731501
 GameObject:
@@ -608,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.600098, y: -173.69995}
+  m_AnchoredPosition: {x: 63.600098, y: -173.69994}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290634528
@@ -2530,6 +2530,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1039808037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039808039}
+  - component: {fileID: 1039808038}
+  m_Layer: 0
+  m_Name: SputniksPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1039808038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039808037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a2cdb94dd073d4fb59d416680ed06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolCount: 1
+  autoExpandPool: 1
+  levelElementPrefab: {fileID: 3461361995489226447, guid: 039da3b2afefb39499dd20ea57ec484b,
+    type: 3}
+--- !u!4 &1039808039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039808037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1148206313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4427,6 +4475,10 @@ PrefabInstance:
       propertyPath: MagnetsPool
       value: 
       objectReference: {fileID: 718048547}
+    - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
+      propertyPath: SputniksPool
+      value: 
+      objectReference: {fileID: 1039808038}
     - target: {fileID: 1340198943, guid: 0da0af5781ddf15419cd68c30bd23975, type: 3}
       propertyPath: BluePlatformsPool
       value: 

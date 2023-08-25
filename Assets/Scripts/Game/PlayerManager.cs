@@ -142,7 +142,7 @@ public class PlayerManager : MonoBehaviour
         player.velocity = Vector3.zero;
 
         transform.position = new Vector3(-10.5f,
-            currentPlatformPosition.position.y + 1f, currentPlatformPosition.position.z);
+            currentPlatformPosition.position.y + 1.5f, currentPlatformPosition.position.z);
     }
 
     public void SetMovementButton(string pressedButton)
