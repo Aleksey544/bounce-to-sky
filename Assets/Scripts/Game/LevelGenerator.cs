@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    //public GameObject WhiteBlackPlatform;
-    //public GameObject BluePlatform;
-    //public GameObject GreenPlatform;
-    //public GameObject RedYellowPlatform;
     public PoolObject WhiteBlackPlatformsPool;
     public PoolObject BluePlatformsPool;
     public PoolObject GreenPlatformsPool;
@@ -34,7 +30,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 sputnikPosition = new Vector3(-7f, 4f, 0f);
     private Quaternion initialCoinRotation;
     private int generatedPlatformLevel = 2;
-    private bool isGeneratedSputnik = false;
+    private bool isRightPositionSputnik = true;
 
     // Начальная генерация уровня
     private void Start()
@@ -53,15 +49,15 @@ public class LevelGenerator : MonoBehaviour
     }
 
     // Основная логика генерации одного подуровня платформ (в одном подуровне предполагается 3 платформы)
-	private void GenerateOnePlatformSublevels()
-	{
-		platformsXPositions[0] = Random.Range(platformsXPositionsRanges[0], platformsXPositionsRanges[1]);
-		platformsXPositions[1] = Random.Range(platformsXPositionsRanges[2], platformsXPositionsRanges[3]);
-		platformsXPositions[2] = Random.Range(platformsXPositionsRanges[4], platformsXPositionsRanges[5]);
+    private void GenerateOnePlatformSublevels()
+    {
+        platformsXPositions[0] = Random.Range(platformsXPositionsRanges[0], platformsXPositionsRanges[1]);
+        platformsXPositions[1] = Random.Range(platformsXPositionsRanges[2], platformsXPositionsRanges[3]);
+        platformsXPositions[2] = Random.Range(platformsXPositionsRanges[4], platformsXPositionsRanges[5]);
 
-		for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            randomPlatform = Random.Range(1, 11);
+            randomPlatform = Random.Range(1, 10);
             randomCollectibleItems = Random.Range(1, 4);
             PoolObject selectedPool = null;
 
@@ -70,7 +66,6 @@ public class LevelGenerator : MonoBehaviour
                 case 1:
                 case 3:
                 case 5:
-                case 7:
                     selectedPool = WhiteBlackPlatformsPool;
                     if (randomCollectibleItems == 1)
                         isGenerateCollectibleItem = true;
@@ -83,12 +78,12 @@ public class LevelGenerator : MonoBehaviour
                         isGenerateCollectibleItem = true;
                     break;
                 case 4:
-                case 9:
+                case 7:
                     selectedPool = GreenPlatformsPool;
                     if (randomCollectibleItems == 3)
                         isGenerateCollectibleItem = true;
                     break;
-                case 10:
+                case 9:
                     selectedPool = RedYellowPlatformsPool;
                     break;
             }
@@ -104,7 +99,6 @@ public class LevelGenerator : MonoBehaviour
                 randomMagnet = Random.Range(1, 8);
                 collectibleItemPosition = new Vector3(platformsXPositions[i],
                     generatedPlatformLevel * yIncrement + yCoinIncrement, generatedPlatformLevel * zIncrement);
-                // GameObject tempCoin = Instantiate(Coin, coinPosition, initialCoinRotation);
 
                 if (randomMagnet == 1)
                     GenerateCollectibleItems(MagnetsPool);
@@ -119,15 +113,34 @@ public class LevelGenerator : MonoBehaviour
         }
 
         generatedPlatformLevel++;
-	}
+    }
 
     public void GenerateSputnik()
     {
-        sputnikPosition = new Vector3(15f, generatedPlatformLevel * yIncrement + 2.5f,
+        float xPosition;
+        float xMovingDestination;
+        float yRotatePosition;
+
+        if (isRightPositionSputnik)
+        {
+            xPosition = 15;
+            xMovingDestination = -11;
+            yRotatePosition = 0;
+            isRightPositionSputnik = false;
+        }
+        else
+        {
+            xPosition = -15;
+            xMovingDestination = 11;
+            yRotatePosition = 180;
+            isRightPositionSputnik = true;
+        }
+
+        sputnikPosition = new Vector3(xPosition, generatedPlatformLevel * yIncrement + 2.5f,
             generatedPlatformLevel * zIncrement + 1.25f);
         sputnik = InstantiatePoolObject(SputniksPool, sputnikPosition);
         sputnikItem = sputnik.GetComponent<SputnikItem>();
-        sputnikItem?.Init();
+        sputnikItem?.Init(xMovingDestination, yRotatePosition);
     }
 
     // Генерация одной платформы в произвольном месте (для дополнительной жизни)
@@ -141,10 +154,6 @@ public class LevelGenerator : MonoBehaviour
             _platformPosition.Set(_platformPosition.x, _platformPosition.y + yIncrement,
                 _platformPosition.z + zIncrement);
         }
-        
-        // for (int i = 0; i < platformsCount; i++)
-        //    tempPlatform = InstantiatePoolObject(WhiteBlackPlatformsPool, new Vector3
-        //        (platformPosition.x, (platformPosition.y + i) * yIncrement, platformPosition.z + i * zIncrement));
     }
 
     // Основная логика генерации предметов, которые подбирает игрок

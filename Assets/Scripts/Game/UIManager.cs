@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void ActiveMagnetUIElements(bool isActive)
     {
-            MagnetRemainingTimeTextTMP.enabled = isActive;
-            MagnetImage.enabled = isActive;    
+        MagnetRemainingTimeTextTMP.enabled = isActive;
+        MagnetImage.enabled = isActive;
     }
 }

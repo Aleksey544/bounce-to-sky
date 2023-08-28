@@ -24,13 +24,11 @@ public class SoundButtonPanel : MonoBehaviour, IPointerClickHandler
     {
         if (isSound)
         {
-            Debug.Log("SoundsButtonPressed");
             AudioManager.Ins.SoundsButtonPressed();
             InitButton(SettingsAssistant.IsSoundsPlaying);
         }
         else
         {
-            Debug.Log("MusicButtonPressed");
             AudioManager.Ins.MusicButtonPressed();
             InitButton(SettingsAssistant.IsMusicPlaying);
         }

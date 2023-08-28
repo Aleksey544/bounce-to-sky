@@ -3,52 +3,34 @@ using UnityEngine;
 
 public class SputnikItem : MonoBehaviour
 {
-    private float xMovingIncrement = -11;
-    private float yRotatingIncrement = 0;
+    private float xMovingDestination = -11;
+    private float yRotatePosition = 0;
 
-    public void Init()
+    public void Init(float xMovingDestination, float yRotatePosition)
     {
-        transform.localRotation = Quaternion.Euler(0, yRotatingIncrement, 0);
+        this.xMovingDestination = xMovingDestination;
+        this.yRotatePosition = yRotatePosition;
+        transform.localRotation = Quaternion.Euler(0, this.yRotatePosition, 0);
         Move();
     }
 
     private void Move()
     {
-        transform.DOLocalMoveX(xMovingIncrement, 4).SetId(this).OnComplete(() =>
+        transform.DOLocalMoveX(xMovingDestination, 4).SetId(this).OnComplete(() =>
         {
-            xMovingIncrement = -xMovingIncrement;
+            xMovingDestination = -xMovingDestination;
 
-            if (yRotatingIncrement == 0)
-                yRotatingIncrement = 180;
-            else if (yRotatingIncrement == 180)
-                yRotatingIncrement = 0;
+            if (yRotatePosition == 0)
+                yRotatePosition = 180;
+            else if (yRotatePosition == 180)
+                yRotatePosition = 0;
 
-            Debug.Log(yRotatingIncrement);
-
-            //Rotate();
-            transform.DOLocalRotate(new Vector3(0, yRotatingIncrement, 0), 1).SetId(this).OnComplete(() =>
+            transform.DOLocalRotate(new Vector3(0, yRotatePosition, 0), 1).SetId(this).OnComplete(() =>
             {
                 Move();
             });
         }).SetEase(Ease.InOutSine);
     }
-
-    //private void MoveBack()
-    //{
-    //    transform.DOLocalMoveX(15, 5f).OnComplete(() =>
-    //    {
-    //        RotateAndInit();
-    //    }).SetId(this).SetEase(Ease.InOutSine);
-    //}
-    //private void Rotate()
-    //{
-    //    transform.DOLocalRotate(new Vector3(0f, 180f, 0f), 1f).OnComplete(() => { MoveBack(); });
-    //}
-
-    //private void RotateAndInit()
-    //{
-    //    transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 1).OnComplete(() => { Move(); });
-    //}
 
     private void OnDisable()
     {

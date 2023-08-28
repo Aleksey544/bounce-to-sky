@@ -93,21 +93,12 @@ public class PlayerManager : MonoBehaviour
 
         currentPlatformPosition = collision.transform;
 
-        Debug.Log($"Y: {currentPlatformPosition.position.y}, Z: {currentPlatformPosition.position.z}");
-
         PlatformAnimation collidedPlatform = collision.collider.GetComponent<PlatformAnimation>();
 
         if (collidedPlatform)
         {
             collidedPlatform.PlatformAnimationPush();
         }
-
-        //DOTween.Kill(this);
-
-        //collision.transform.DOScale(new Vector3(1f, 4f, 1f), 0.25f).SetId(this).OnComplete(() =>
-        //{
-        //    collision.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f).SetId(this);
-        //});
 
         PlayerAnimation();
         AddScore();
