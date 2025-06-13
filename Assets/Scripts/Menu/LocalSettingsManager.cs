@@ -45,7 +45,6 @@ public class LocalSettingsManager
 
     public T Get<T>(string key)
     {
-        //  PlayerPrefs.DeleteAll();
         object value = null;
         if (typeof(T) == typeof(int))
         {
